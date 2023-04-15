@@ -1,6 +1,6 @@
-# Generated @ 2023-02-21T09:43:32+01:00
+# Generated @ 2023-04-08T09:13:27+02:00
 # Command line:
-#   /home/arnetheduck/.nimble/pkgs2/nimterop-0.6.13-a93246b2ad5531db11e51de7b2d188c42d95576a/nimterop/toast --preprocess -m:c -H --compile+=sqlite3_abi/sqlite3.c --pnim --symOverride=sqlite3_index_info,sqlite3_vmprintf,sqlite3_vsnprintf,sqlite3_str_vappendf,sqlite_int64,sqlite_uint64,sqlite3_int64,sqlite3_uint64,SQLITE_STATIC,sqlite3_version --nim:/home/arnetheduck/src/Nim/bin/nim --pluginSourcePath=/home/arnetheduck/.cache/nim/nimterop/cPlugins/nimterop_2309319294.nim /home/arnetheduck/src/nim-sqlite3-abi/sqlite3_abi/sqlite3.h -o /home/arnetheduck/src/nim-sqlite3-abi/sqlite3_abi/sqlite3_gen.nim
+#   .nimble/pkgs/nimterop-0.6.13/nimterop/toast --preprocess -m:c --recurse -H --compile+=sqlite3_abi/sqlite3.c --pnim --symOverride=sqlite3_index_info,sqlite_int64,sqlite_uint64,sqlite3_int64,sqlite3_uint64,SQLITE_STATIC,sqlite3_version --nim:/Users/gpicron/.choosenim/toolchains/nim-#devel/bin/nim --pluginSourcePath=/Users/gpicron/.cache/nim/nimterop/cPlugins/nimterop_2309319294.nim /Users/gpicron/Documents/arboratum/projects/ssb2/BPChain/nim-sqlite3-abi/sqlite3_abi/sqlite3ext.h -o /Users/gpicron/Documents/arboratum/projects/ssb2/BPChain/nim-sqlite3-abi/sqlite3_abi/sqlite3_gen.nim
 
 # const 'SQLITE_EXTERN' has unsupported value 'extern'
 # const 'SQLITE_STDCALL' has unsupported value 'SQLITE_APICALL'
@@ -12,21 +12,291 @@
 # const 'SQLITE_GET_LOCKPROXYFILE' has unsupported value 'SQLITE_FCNTL_GET_LOCKPROXYFILE'
 # const 'SQLITE_SET_LOCKPROXYFILE' has unsupported value 'SQLITE_FCNTL_SET_LOCKPROXYFILE'
 # const 'SQLITE_LAST_ERRNO' has unsupported value 'SQLITE_FCNTL_LAST_ERRNO'
-# proc 'sqlite3_vmprintf' skipped
-# proc 'sqlite3_vsnprintf' skipped
 # const 'SQLITE_STATIC' skipped
 # const 'SQLITE_TRANSIENT' has unsupported value '((sqlite3_destructor_type)-1)'
 # type 'sqlite3_index_info' skipped
-# proc 'sqlite3_str_vappendf' skipped
+# const 'sqlite3_aggregate_context' has unsupported value 'sqlite3_api->aggregate_context'
+# const 'sqlite3_aggregate_count' has unsupported value 'sqlite3_api->aggregate_count'
+# const 'sqlite3_bind_blob' has unsupported value 'sqlite3_api->bind_blob'
+# const 'sqlite3_bind_double' has unsupported value 'sqlite3_api->bind_double'
+# const 'sqlite3_bind_int' has unsupported value 'sqlite3_api->bind_int'
+# const 'sqlite3_bind_int64' has unsupported value 'sqlite3_api->bind_int64'
+# const 'sqlite3_bind_null' has unsupported value 'sqlite3_api->bind_null'
+# const 'sqlite3_bind_parameter_count' has unsupported value 'sqlite3_api->bind_parameter_count'
+# const 'sqlite3_bind_parameter_index' has unsupported value 'sqlite3_api->bind_parameter_index'
+# const 'sqlite3_bind_parameter_name' has unsupported value 'sqlite3_api->bind_parameter_name'
+# const 'sqlite3_bind_text' has unsupported value 'sqlite3_api->bind_text'
+# const 'sqlite3_bind_text16' has unsupported value 'sqlite3_api->bind_text16'
+# const 'sqlite3_bind_value' has unsupported value 'sqlite3_api->bind_value'
+# const 'sqlite3_busy_handler' has unsupported value 'sqlite3_api->busy_handler'
+# const 'sqlite3_busy_timeout' has unsupported value 'sqlite3_api->busy_timeout'
+# const 'sqlite3_changes' has unsupported value 'sqlite3_api->changes'
+# const 'sqlite3_close' has unsupported value 'sqlite3_api->close'
+# const 'sqlite3_collation_needed' has unsupported value 'sqlite3_api->collation_needed'
+# const 'sqlite3_collation_needed16' has unsupported value 'sqlite3_api->collation_needed16'
+# const 'sqlite3_column_blob' has unsupported value 'sqlite3_api->column_blob'
+# const 'sqlite3_column_bytes' has unsupported value 'sqlite3_api->column_bytes'
+# const 'sqlite3_column_bytes16' has unsupported value 'sqlite3_api->column_bytes16'
+# const 'sqlite3_column_count' has unsupported value 'sqlite3_api->column_count'
+# const 'sqlite3_column_database_name' has unsupported value 'sqlite3_api->column_database_name'
+# const 'sqlite3_column_database_name16' has unsupported value 'sqlite3_api->column_database_name16'
+# const 'sqlite3_column_decltype' has unsupported value 'sqlite3_api->column_decltype'
+# const 'sqlite3_column_decltype16' has unsupported value 'sqlite3_api->column_decltype16'
+# const 'sqlite3_column_double' has unsupported value 'sqlite3_api->column_double'
+# const 'sqlite3_column_int' has unsupported value 'sqlite3_api->column_int'
+# const 'sqlite3_column_int64' has unsupported value 'sqlite3_api->column_int64'
+# const 'sqlite3_column_name' has unsupported value 'sqlite3_api->column_name'
+# const 'sqlite3_column_name16' has unsupported value 'sqlite3_api->column_name16'
+# const 'sqlite3_column_origin_name' has unsupported value 'sqlite3_api->column_origin_name'
+# const 'sqlite3_column_origin_name16' has unsupported value 'sqlite3_api->column_origin_name16'
+# const 'sqlite3_column_table_name' has unsupported value 'sqlite3_api->column_table_name'
+# const 'sqlite3_column_table_name16' has unsupported value 'sqlite3_api->column_table_name16'
+# const 'sqlite3_column_text' has unsupported value 'sqlite3_api->column_text'
+# const 'sqlite3_column_text16' has unsupported value 'sqlite3_api->column_text16'
+# const 'sqlite3_column_type' has unsupported value 'sqlite3_api->column_type'
+# const 'sqlite3_column_value' has unsupported value 'sqlite3_api->column_value'
+# const 'sqlite3_commit_hook' has unsupported value 'sqlite3_api->commit_hook'
+# const 'sqlite3_complete' has unsupported value 'sqlite3_api->complete'
+# const 'sqlite3_complete16' has unsupported value 'sqlite3_api->complete16'
+# const 'sqlite3_create_collation' has unsupported value 'sqlite3_api->create_collation'
+# const 'sqlite3_create_collation16' has unsupported value 'sqlite3_api->create_collation16'
+# const 'sqlite3_create_function' has unsupported value 'sqlite3_api->create_function'
+# const 'sqlite3_create_function16' has unsupported value 'sqlite3_api->create_function16'
+# const 'sqlite3_create_module' has unsupported value 'sqlite3_api->create_module'
+# const 'sqlite3_create_module_v2' has unsupported value 'sqlite3_api->create_module_v2'
+# const 'sqlite3_data_count' has unsupported value 'sqlite3_api->data_count'
+# const 'sqlite3_db_handle' has unsupported value 'sqlite3_api->db_handle'
+# const 'sqlite3_declare_vtab' has unsupported value 'sqlite3_api->declare_vtab'
+# const 'sqlite3_enable_shared_cache' has unsupported value 'sqlite3_api->enable_shared_cache'
+# const 'sqlite3_errcode' has unsupported value 'sqlite3_api->errcode'
+# const 'sqlite3_errmsg' has unsupported value 'sqlite3_api->errmsg'
+# const 'sqlite3_errmsg16' has unsupported value 'sqlite3_api->errmsg16'
+# const 'sqlite3_exec' has unsupported value 'sqlite3_api->exec'
+# const 'sqlite3_expired' has unsupported value 'sqlite3_api->expired'
+# const 'sqlite3_finalize' has unsupported value 'sqlite3_api->finalize'
+# const 'sqlite3_free' has unsupported value 'sqlite3_api->free'
+# const 'sqlite3_free_table' has unsupported value 'sqlite3_api->free_table'
+# const 'sqlite3_get_autocommit' has unsupported value 'sqlite3_api->get_autocommit'
+# const 'sqlite3_get_auxdata' has unsupported value 'sqlite3_api->get_auxdata'
+# const 'sqlite3_get_table' has unsupported value 'sqlite3_api->get_table'
+# const 'sqlite3_global_recover' has unsupported value 'sqlite3_api->global_recover'
+# const 'sqlite3_interrupt' has unsupported value 'sqlite3_api->interruptx'
+# const 'sqlite3_last_insert_rowid' has unsupported value 'sqlite3_api->last_insert_rowid'
+# const 'sqlite3_libversion' has unsupported value 'sqlite3_api->libversion'
+# const 'sqlite3_libversion_number' has unsupported value 'sqlite3_api->libversion_number'
+# const 'sqlite3_malloc' has unsupported value 'sqlite3_api->malloc'
+# const 'sqlite3_mprintf' has unsupported value 'sqlite3_api->mprintf'
+# const 'sqlite3_open' has unsupported value 'sqlite3_api->open'
+# const 'sqlite3_open16' has unsupported value 'sqlite3_api->open16'
+# const 'sqlite3_prepare' has unsupported value 'sqlite3_api->prepare'
+# const 'sqlite3_prepare16' has unsupported value 'sqlite3_api->prepare16'
+# const 'sqlite3_prepare_v2' has unsupported value 'sqlite3_api->prepare_v2'
+# const 'sqlite3_prepare16_v2' has unsupported value 'sqlite3_api->prepare16_v2'
+# const 'sqlite3_profile' has unsupported value 'sqlite3_api->profile'
+# const 'sqlite3_progress_handler' has unsupported value 'sqlite3_api->progress_handler'
+# const 'sqlite3_realloc' has unsupported value 'sqlite3_api->realloc'
+# const 'sqlite3_reset' has unsupported value 'sqlite3_api->reset'
+# const 'sqlite3_result_blob' has unsupported value 'sqlite3_api->result_blob'
+# const 'sqlite3_result_double' has unsupported value 'sqlite3_api->result_double'
+# const 'sqlite3_result_error' has unsupported value 'sqlite3_api->result_error'
+# const 'sqlite3_result_error16' has unsupported value 'sqlite3_api->result_error16'
+# const 'sqlite3_result_int' has unsupported value 'sqlite3_api->result_int'
+# const 'sqlite3_result_int64' has unsupported value 'sqlite3_api->result_int64'
+# const 'sqlite3_result_null' has unsupported value 'sqlite3_api->result_null'
+# const 'sqlite3_result_text' has unsupported value 'sqlite3_api->result_text'
+# const 'sqlite3_result_text16' has unsupported value 'sqlite3_api->result_text16'
+# const 'sqlite3_result_text16be' has unsupported value 'sqlite3_api->result_text16be'
+# const 'sqlite3_result_text16le' has unsupported value 'sqlite3_api->result_text16le'
+# const 'sqlite3_result_value' has unsupported value 'sqlite3_api->result_value'
+# const 'sqlite3_rollback_hook' has unsupported value 'sqlite3_api->rollback_hook'
+# const 'sqlite3_set_authorizer' has unsupported value 'sqlite3_api->set_authorizer'
+# const 'sqlite3_set_auxdata' has unsupported value 'sqlite3_api->set_auxdata'
+# const 'sqlite3_snprintf' has unsupported value 'sqlite3_api->xsnprintf'
+# const 'sqlite3_step' has unsupported value 'sqlite3_api->step'
+# const 'sqlite3_table_column_metadata' has unsupported value 'sqlite3_api->table_column_metadata'
+# const 'sqlite3_thread_cleanup' has unsupported value 'sqlite3_api->thread_cleanup'
+# const 'sqlite3_total_changes' has unsupported value 'sqlite3_api->total_changes'
+# const 'sqlite3_trace' has unsupported value 'sqlite3_api->trace'
+# const 'sqlite3_transfer_bindings' has unsupported value 'sqlite3_api->transfer_bindings'
+# const 'sqlite3_update_hook' has unsupported value 'sqlite3_api->update_hook'
+# const 'sqlite3_user_data' has unsupported value 'sqlite3_api->user_data'
+# const 'sqlite3_value_blob' has unsupported value 'sqlite3_api->value_blob'
+# const 'sqlite3_value_bytes' has unsupported value 'sqlite3_api->value_bytes'
+# const 'sqlite3_value_bytes16' has unsupported value 'sqlite3_api->value_bytes16'
+# const 'sqlite3_value_double' has unsupported value 'sqlite3_api->value_double'
+# const 'sqlite3_value_int' has unsupported value 'sqlite3_api->value_int'
+# const 'sqlite3_value_int64' has unsupported value 'sqlite3_api->value_int64'
+# const 'sqlite3_value_numeric_type' has unsupported value 'sqlite3_api->value_numeric_type'
+# const 'sqlite3_value_text' has unsupported value 'sqlite3_api->value_text'
+# const 'sqlite3_value_text16' has unsupported value 'sqlite3_api->value_text16'
+# const 'sqlite3_value_text16be' has unsupported value 'sqlite3_api->value_text16be'
+# const 'sqlite3_value_text16le' has unsupported value 'sqlite3_api->value_text16le'
+# const 'sqlite3_value_type' has unsupported value 'sqlite3_api->value_type'
+# const 'sqlite3_vmprintf' has unsupported value 'sqlite3_api->vmprintf'
+# const 'sqlite3_vsnprintf' has unsupported value 'sqlite3_api->xvsnprintf'
+# const 'sqlite3_overload_function' has unsupported value 'sqlite3_api->overload_function'
+# const 'sqlite3_prepare_v2' has unsupported value 'sqlite3_api->prepare_v2'
+# const 'sqlite3_prepare16_v2' has unsupported value 'sqlite3_api->prepare16_v2'
+# const 'sqlite3_clear_bindings' has unsupported value 'sqlite3_api->clear_bindings'
+# const 'sqlite3_bind_zeroblob' has unsupported value 'sqlite3_api->bind_zeroblob'
+# const 'sqlite3_blob_bytes' has unsupported value 'sqlite3_api->blob_bytes'
+# const 'sqlite3_blob_close' has unsupported value 'sqlite3_api->blob_close'
+# const 'sqlite3_blob_open' has unsupported value 'sqlite3_api->blob_open'
+# const 'sqlite3_blob_read' has unsupported value 'sqlite3_api->blob_read'
+# const 'sqlite3_blob_write' has unsupported value 'sqlite3_api->blob_write'
+# const 'sqlite3_create_collation_v2' has unsupported value 'sqlite3_api->create_collation_v2'
+# const 'sqlite3_file_control' has unsupported value 'sqlite3_api->file_control'
+# const 'sqlite3_memory_highwater' has unsupported value 'sqlite3_api->memory_highwater'
+# const 'sqlite3_memory_used' has unsupported value 'sqlite3_api->memory_used'
+# const 'sqlite3_mutex_alloc' has unsupported value 'sqlite3_api->mutex_alloc'
+# const 'sqlite3_mutex_enter' has unsupported value 'sqlite3_api->mutex_enter'
+# const 'sqlite3_mutex_free' has unsupported value 'sqlite3_api->mutex_free'
+# const 'sqlite3_mutex_leave' has unsupported value 'sqlite3_api->mutex_leave'
+# const 'sqlite3_mutex_try' has unsupported value 'sqlite3_api->mutex_try'
+# const 'sqlite3_open_v2' has unsupported value 'sqlite3_api->open_v2'
+# const 'sqlite3_release_memory' has unsupported value 'sqlite3_api->release_memory'
+# const 'sqlite3_result_error_nomem' has unsupported value 'sqlite3_api->result_error_nomem'
+# const 'sqlite3_result_error_toobig' has unsupported value 'sqlite3_api->result_error_toobig'
+# const 'sqlite3_sleep' has unsupported value 'sqlite3_api->sleep'
+# const 'sqlite3_soft_heap_limit' has unsupported value 'sqlite3_api->soft_heap_limit'
+# const 'sqlite3_vfs_find' has unsupported value 'sqlite3_api->vfs_find'
+# const 'sqlite3_vfs_register' has unsupported value 'sqlite3_api->vfs_register'
+# const 'sqlite3_vfs_unregister' has unsupported value 'sqlite3_api->vfs_unregister'
+# const 'sqlite3_threadsafe' has unsupported value 'sqlite3_api->xthreadsafe'
+# const 'sqlite3_result_zeroblob' has unsupported value 'sqlite3_api->result_zeroblob'
+# const 'sqlite3_result_error_code' has unsupported value 'sqlite3_api->result_error_code'
+# const 'sqlite3_test_control' has unsupported value 'sqlite3_api->test_control'
+# const 'sqlite3_randomness' has unsupported value 'sqlite3_api->randomness'
+# const 'sqlite3_context_db_handle' has unsupported value 'sqlite3_api->context_db_handle'
+# const 'sqlite3_extended_result_codes' has unsupported value 'sqlite3_api->extended_result_codes'
+# const 'sqlite3_limit' has unsupported value 'sqlite3_api->limit'
+# const 'sqlite3_next_stmt' has unsupported value 'sqlite3_api->next_stmt'
+# const 'sqlite3_sql' has unsupported value 'sqlite3_api->sql'
+# const 'sqlite3_status' has unsupported value 'sqlite3_api->status'
+# const 'sqlite3_backup_finish' has unsupported value 'sqlite3_api->backup_finish'
+# const 'sqlite3_backup_init' has unsupported value 'sqlite3_api->backup_init'
+# const 'sqlite3_backup_pagecount' has unsupported value 'sqlite3_api->backup_pagecount'
+# const 'sqlite3_backup_remaining' has unsupported value 'sqlite3_api->backup_remaining'
+# const 'sqlite3_backup_step' has unsupported value 'sqlite3_api->backup_step'
+# const 'sqlite3_compileoption_get' has unsupported value 'sqlite3_api->compileoption_get'
+# const 'sqlite3_compileoption_used' has unsupported value 'sqlite3_api->compileoption_used'
+# const 'sqlite3_create_function_v2' has unsupported value 'sqlite3_api->create_function_v2'
+# const 'sqlite3_db_config' has unsupported value 'sqlite3_api->db_config'
+# const 'sqlite3_db_mutex' has unsupported value 'sqlite3_api->db_mutex'
+# const 'sqlite3_db_status' has unsupported value 'sqlite3_api->db_status'
+# const 'sqlite3_extended_errcode' has unsupported value 'sqlite3_api->extended_errcode'
+# const 'sqlite3_log' has unsupported value 'sqlite3_api->log'
+# const 'sqlite3_soft_heap_limit64' has unsupported value 'sqlite3_api->soft_heap_limit64'
+# const 'sqlite3_sourceid' has unsupported value 'sqlite3_api->sourceid'
+# const 'sqlite3_stmt_status' has unsupported value 'sqlite3_api->stmt_status'
+# const 'sqlite3_strnicmp' has unsupported value 'sqlite3_api->strnicmp'
+# const 'sqlite3_unlock_notify' has unsupported value 'sqlite3_api->unlock_notify'
+# const 'sqlite3_wal_autocheckpoint' has unsupported value 'sqlite3_api->wal_autocheckpoint'
+# const 'sqlite3_wal_checkpoint' has unsupported value 'sqlite3_api->wal_checkpoint'
+# const 'sqlite3_wal_hook' has unsupported value 'sqlite3_api->wal_hook'
+# const 'sqlite3_blob_reopen' has unsupported value 'sqlite3_api->blob_reopen'
+# const 'sqlite3_vtab_config' has unsupported value 'sqlite3_api->vtab_config'
+# const 'sqlite3_vtab_on_conflict' has unsupported value 'sqlite3_api->vtab_on_conflict'
+# const 'sqlite3_close_v2' has unsupported value 'sqlite3_api->close_v2'
+# const 'sqlite3_db_filename' has unsupported value 'sqlite3_api->db_filename'
+# const 'sqlite3_db_readonly' has unsupported value 'sqlite3_api->db_readonly'
+# const 'sqlite3_db_release_memory' has unsupported value 'sqlite3_api->db_release_memory'
+# const 'sqlite3_errstr' has unsupported value 'sqlite3_api->errstr'
+# const 'sqlite3_stmt_busy' has unsupported value 'sqlite3_api->stmt_busy'
+# const 'sqlite3_stmt_readonly' has unsupported value 'sqlite3_api->stmt_readonly'
+# const 'sqlite3_stricmp' has unsupported value 'sqlite3_api->stricmp'
+# const 'sqlite3_uri_boolean' has unsupported value 'sqlite3_api->uri_boolean'
+# const 'sqlite3_uri_int64' has unsupported value 'sqlite3_api->uri_int64'
+# const 'sqlite3_uri_parameter' has unsupported value 'sqlite3_api->uri_parameter'
+# const 'sqlite3_uri_vsnprintf' has unsupported value 'sqlite3_api->xvsnprintf'
+# const 'sqlite3_wal_checkpoint_v2' has unsupported value 'sqlite3_api->wal_checkpoint_v2'
+# const 'sqlite3_auto_extension' has unsupported value 'sqlite3_api->auto_extension'
+# const 'sqlite3_bind_blob64' has unsupported value 'sqlite3_api->bind_blob64'
+# const 'sqlite3_bind_text64' has unsupported value 'sqlite3_api->bind_text64'
+# const 'sqlite3_cancel_auto_extension' has unsupported value 'sqlite3_api->cancel_auto_extension'
+# const 'sqlite3_load_extension' has unsupported value 'sqlite3_api->load_extension'
+# const 'sqlite3_malloc64' has unsupported value 'sqlite3_api->malloc64'
+# const 'sqlite3_msize' has unsupported value 'sqlite3_api->msize'
+# const 'sqlite3_realloc64' has unsupported value 'sqlite3_api->realloc64'
+# const 'sqlite3_reset_auto_extension' has unsupported value 'sqlite3_api->reset_auto_extension'
+# const 'sqlite3_result_blob64' has unsupported value 'sqlite3_api->result_blob64'
+# const 'sqlite3_result_text64' has unsupported value 'sqlite3_api->result_text64'
+# const 'sqlite3_strglob' has unsupported value 'sqlite3_api->strglob'
+# const 'sqlite3_value_dup' has unsupported value 'sqlite3_api->value_dup'
+# const 'sqlite3_value_free' has unsupported value 'sqlite3_api->value_free'
+# const 'sqlite3_result_zeroblob64' has unsupported value 'sqlite3_api->result_zeroblob64'
+# const 'sqlite3_bind_zeroblob64' has unsupported value 'sqlite3_api->bind_zeroblob64'
+# const 'sqlite3_value_subtype' has unsupported value 'sqlite3_api->value_subtype'
+# const 'sqlite3_result_subtype' has unsupported value 'sqlite3_api->result_subtype'
+# const 'sqlite3_status64' has unsupported value 'sqlite3_api->status64'
+# const 'sqlite3_strlike' has unsupported value 'sqlite3_api->strlike'
+# const 'sqlite3_db_cacheflush' has unsupported value 'sqlite3_api->db_cacheflush'
+# const 'sqlite3_system_errno' has unsupported value 'sqlite3_api->system_errno'
+# const 'sqlite3_trace_v2' has unsupported value 'sqlite3_api->trace_v2'
+# const 'sqlite3_expanded_sql' has unsupported value 'sqlite3_api->expanded_sql'
+# const 'sqlite3_set_last_insert_rowid' has unsupported value 'sqlite3_api->set_last_insert_rowid'
+# const 'sqlite3_prepare_v3' has unsupported value 'sqlite3_api->prepare_v3'
+# const 'sqlite3_prepare16_v3' has unsupported value 'sqlite3_api->prepare16_v3'
+# const 'sqlite3_bind_pointer' has unsupported value 'sqlite3_api->bind_pointer'
+# const 'sqlite3_result_pointer' has unsupported value 'sqlite3_api->result_pointer'
+# const 'sqlite3_value_pointer' has unsupported value 'sqlite3_api->value_pointer'
+# const 'sqlite3_vtab_nochange' has unsupported value 'sqlite3_api->vtab_nochange'
+# const 'sqlite3_value_nochange' has unsupported value 'sqlite3_api->value_nochange'
+# const 'sqlite3_vtab_collation' has unsupported value 'sqlite3_api->vtab_collation'
+# const 'sqlite3_keyword_count' has unsupported value 'sqlite3_api->keyword_count'
+# const 'sqlite3_keyword_name' has unsupported value 'sqlite3_api->keyword_name'
+# const 'sqlite3_keyword_check' has unsupported value 'sqlite3_api->keyword_check'
+# const 'sqlite3_str_new' has unsupported value 'sqlite3_api->str_new'
+# const 'sqlite3_str_finish' has unsupported value 'sqlite3_api->str_finish'
+# const 'sqlite3_str_appendf' has unsupported value 'sqlite3_api->str_appendf'
+# const 'sqlite3_str_vappendf' has unsupported value 'sqlite3_api->str_vappendf'
+# const 'sqlite3_str_append' has unsupported value 'sqlite3_api->str_append'
+# const 'sqlite3_str_appendall' has unsupported value 'sqlite3_api->str_appendall'
+# const 'sqlite3_str_appendchar' has unsupported value 'sqlite3_api->str_appendchar'
+# const 'sqlite3_str_reset' has unsupported value 'sqlite3_api->str_reset'
+# const 'sqlite3_str_errcode' has unsupported value 'sqlite3_api->str_errcode'
+# const 'sqlite3_str_length' has unsupported value 'sqlite3_api->str_length'
+# const 'sqlite3_str_value' has unsupported value 'sqlite3_api->str_value'
+# const 'sqlite3_create_window_function' has unsupported value 'sqlite3_api->create_window_function'
+# const 'sqlite3_normalized_sql' has unsupported value 'sqlite3_api->normalized_sql'
+# const 'sqlite3_stmt_isexplain' has unsupported value 'sqlite3_api->stmt_isexplain'
+# const 'sqlite3_value_frombind' has unsupported value 'sqlite3_api->value_frombind'
+# const 'sqlite3_drop_modules' has unsupported value 'sqlite3_api->drop_modules'
+# const 'sqlite3_hard_heap_limit64' has unsupported value 'sqlite3_api->hard_heap_limit64'
+# const 'sqlite3_uri_key' has unsupported value 'sqlite3_api->uri_key'
+# const 'sqlite3_filename_database' has unsupported value 'sqlite3_api->filename_database'
+# const 'sqlite3_filename_journal' has unsupported value 'sqlite3_api->filename_journal'
+# const 'sqlite3_filename_wal' has unsupported value 'sqlite3_api->filename_wal'
+# const 'sqlite3_create_filename' has unsupported value 'sqlite3_api->create_filename'
+# const 'sqlite3_free_filename' has unsupported value 'sqlite3_api->free_filename'
+# const 'sqlite3_database_file_object' has unsupported value 'sqlite3_api->database_file_object'
+# const 'sqlite3_txn_state' has unsupported value 'sqlite3_api->txn_state'
+# const 'sqlite3_changes64' has unsupported value 'sqlite3_api->changes64'
+# const 'sqlite3_total_changes64' has unsupported value 'sqlite3_api->total_changes64'
+# const 'sqlite3_autovacuum_pages' has unsupported value 'sqlite3_api->autovacuum_pages'
+# const 'sqlite3_error_offset' has unsupported value 'sqlite3_api->error_offset'
+# const 'sqlite3_vtab_rhs_value' has unsupported value 'sqlite3_api->vtab_rhs_value'
+# const 'sqlite3_vtab_distinct' has unsupported value 'sqlite3_api->vtab_distinct'
+# const 'sqlite3_vtab_in' has unsupported value 'sqlite3_api->vtab_in'
+# const 'sqlite3_vtab_in_first' has unsupported value 'sqlite3_api->vtab_in_first'
+# const 'sqlite3_vtab_in_next' has unsupported value 'sqlite3_api->vtab_in_next'
+# const 'sqlite3_deserialize' has unsupported value 'sqlite3_api->deserialize'
+# const 'sqlite3_serialize' has unsupported value 'sqlite3_api->serialize'
+# const 'sqlite3_db_name' has unsupported value 'sqlite3_api->db_name'
+# const 'sqlite3_value_encoding' has unsupported value 'sqlite3_api->value_encoding'
+# const 'SQLITE_EXTENSION_INIT1' has unsupported value 'const sqlite3_api_routines *sqlite3_api=0;'
+# const 'SQLITE_EXTENSION_INIT3' has unsupported value 'extern const sqlite3_api_routines *sqlite3_api;'
 {.push hint[ConvFromXtoItselfNotNeeded]: off.}
+
+type va_list* {.importc, header:"<stdarg.h>".} = object
 
 
 {.experimental: "codeReordering".}
 when (NimMajor, NimMinor) < (1, 4):
   {.pragma: sqlitedecl, cdecl, gcsafe, raises: [Defect].}
 else:
-  {.pragma: sqlitedecl, cdecl, gcsafe, raises: [].}
-{.compile: "sqlite3_abi/sqlite3.c".}
+  {.pragma: sqlitedecl, gcsafe, cdecl, raises: [].}
+{.compile: "sqlite3.c".}
 const
   SQLITE_VERSION* = "3.40.1"
   SQLITE_VERSION_NUMBER* = 3040001
@@ -609,7 +879,500 @@ type
                 ## ```
   
   sqlite3_mutex* {.incompleteStruct.} = object
-  sqlite3_api_routines* {.incompleteStruct.} = object
+  sqlite3_api_routines* {.bycopy.} = object ## ```
+                                             ##   * END OF REGISTRATION API
+                                             ##  **********************************************************************
+                                             ##    ***** End of fts5.h******
+                                             ##     
+                                             ##  * The following structure holds pointers to all of the SQLite API
+                                             ##  * routines.
+                                             ##  *
+                                             ##  * WARNING:  In order to maintain backwards compatibility, add new
+                                             ##  * interfaces to the end of this structure only.  If you insert new
+                                             ##  * interfaces in the middle of this structure, then older different
+                                             ##  * versions of SQLite will not be able to load each other's shared
+                                             ##  * libraries!
+                                             ## ```
+    aggregate_context*: proc (a1: ptr sqlite3_context; nBytes: cint): pointer {.
+        sqlitedecl.}
+    aggregate_count*: proc (a1: ptr sqlite3_context): cint {.sqlitedecl.}
+    bind_blob*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: pointer; n: cint;
+                      a5: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
+    bind_double*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cdouble): cint {.
+        sqlitedecl.}
+    bind_int*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cint): cint {.sqlitedecl.}
+    bind_int64*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: int64): cint {.sqlitedecl.}
+    bind_null*: proc (a1: ptr sqlite3_stmt; a2: cint): cint {.sqlitedecl.}
+    bind_parameter_count*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    bind_parameter_index*: proc (a1: ptr sqlite3_stmt; zName: cstring): cint {.
+        sqlitedecl.}
+    bind_parameter_name*: proc (a1: ptr sqlite3_stmt; a2: cint): cstring {.sqlitedecl.}
+    bind_text*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cstring; n: cint;
+                      a5: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
+    bind_text16*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: pointer; a4: cint;
+                        a5: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
+    bind_value*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: ptr sqlite3_value): cint {.
+        sqlitedecl.}
+    busy_handler*: proc (a1: ptr sqlite3;
+                         a2: proc (a1: pointer; a2: cint): cint {.sqlitedecl.};
+                         a3: pointer): cint {.sqlitedecl.}
+    busy_timeout*: proc (a1: ptr sqlite3; ms: cint): cint {.sqlitedecl.}
+    changes*: proc (a1: ptr sqlite3): cint {.sqlitedecl.}
+    close*: proc (a1: ptr sqlite3): cint {.sqlitedecl.}
+    collation_needed*: proc (a1: ptr sqlite3; a2: pointer; a3: proc (
+        a1: pointer; a2: ptr sqlite3; eTextRep: cint; a4: cstring) {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+    collation_needed16*: proc (a1: ptr sqlite3; a2: pointer; a3: proc (
+        a1: pointer; a2: ptr sqlite3; eTextRep: cint; a4: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+    column_blob*: proc (a1: ptr sqlite3_stmt; iCol: cint): pointer {.sqlitedecl.}
+    column_bytes*: proc (a1: ptr sqlite3_stmt; iCol: cint): cint {.sqlitedecl.}
+    column_bytes16*: proc (a1: ptr sqlite3_stmt; iCol: cint): cint {.sqlitedecl.}
+    column_count*: proc (pStmt: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    column_database_name*: proc (a1: ptr sqlite3_stmt; a2: cint): cstring {.
+        sqlitedecl.}
+    column_database_name16*: proc (a1: ptr sqlite3_stmt; a2: cint): pointer {.
+        sqlitedecl.}
+    column_decltype*: proc (a1: ptr sqlite3_stmt; i: cint): cstring {.sqlitedecl.}
+    column_decltype16*: proc (a1: ptr sqlite3_stmt; a2: cint): pointer {.sqlitedecl.}
+    column_double*: proc (a1: ptr sqlite3_stmt; iCol: cint): cdouble {.sqlitedecl.}
+    column_int*: proc (a1: ptr sqlite3_stmt; iCol: cint): cint {.sqlitedecl.}
+    column_int64*: proc (a1: ptr sqlite3_stmt; iCol: cint): int64 {.sqlitedecl.}
+    column_name*: proc (a1: ptr sqlite3_stmt; a2: cint): cstring {.sqlitedecl.}
+    column_name16*: proc (a1: ptr sqlite3_stmt; a2: cint): pointer {.sqlitedecl.}
+    column_origin_name*: proc (a1: ptr sqlite3_stmt; a2: cint): cstring {.sqlitedecl.}
+    column_origin_name16*: proc (a1: ptr sqlite3_stmt; a2: cint): pointer {.
+        sqlitedecl.}
+    column_table_name*: proc (a1: ptr sqlite3_stmt; a2: cint): cstring {.sqlitedecl.}
+    column_table_name16*: proc (a1: ptr sqlite3_stmt; a2: cint): pointer {.sqlitedecl.}
+    column_text*: proc (a1: ptr sqlite3_stmt; iCol: cint): ptr cuchar {.sqlitedecl.}
+    column_text16*: proc (a1: ptr sqlite3_stmt; iCol: cint): pointer {.sqlitedecl.}
+    column_type*: proc (a1: ptr sqlite3_stmt; iCol: cint): cint {.sqlitedecl.}
+    column_value*: proc (a1: ptr sqlite3_stmt; iCol: cint): ptr sqlite3_value {.
+        sqlitedecl.}
+    commit_hook*: proc (a1: ptr sqlite3; a2: proc (a1: pointer): cint {.sqlitedecl.};
+                        a3: pointer): pointer {.sqlitedecl.}
+    complete*: proc (sql: cstring): cint {.sqlitedecl.}
+    complete16*: proc (sql: pointer): cint {.sqlitedecl.}
+    create_collation*: proc (a1: ptr sqlite3; a2: cstring; a3: cint;
+                             a4: pointer; a5: proc (a1: pointer; a2: cint;
+        a3: pointer; a4: cint; a5: pointer): cint {.sqlitedecl.}): cint {.sqlitedecl.}
+    create_collation16*: proc (a1: ptr sqlite3; a2: pointer; a3: cint;
+                               a4: pointer; a5: proc (a1: pointer; a2: cint;
+        a3: pointer; a4: cint; a5: pointer): cint {.sqlitedecl.}): cint {.sqlitedecl.}
+    create_function*: proc (a1: ptr sqlite3; a2: cstring; a3: cint; a4: cint;
+                            a5: pointer; xFunc: proc (a1: ptr sqlite3_context;
+        a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.}; xStep: proc (
+        a1: ptr sqlite3_context; a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.};
+                            xFinal: proc (a1: ptr sqlite3_context) {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+    create_function16*: proc (a1: ptr sqlite3; a2: pointer; a3: cint; a4: cint;
+                              a5: pointer; xFunc: proc (a1: ptr sqlite3_context;
+        a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.}; xStep: proc (
+        a1: ptr sqlite3_context; a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.};
+                              xFinal: proc (a1: ptr sqlite3_context) {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+    create_module*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr sqlite3_module;
+                          a4: pointer): cint {.sqlitedecl.}
+    data_count*: proc (pStmt: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    db_handle*: proc (a1: ptr sqlite3_stmt): ptr sqlite3 {.sqlitedecl.}
+    declare_vtab*: proc (a1: ptr sqlite3; a2: cstring): cint {.sqlitedecl.}
+    enable_shared_cache*: proc (a1: cint): cint {.sqlitedecl.}
+    errcode*: proc (db: ptr sqlite3): cint {.sqlitedecl.}
+    errmsg*: proc (a1: ptr sqlite3): cstring {.sqlitedecl.}
+    errmsg16*: proc (a1: ptr sqlite3): pointer {.sqlitedecl.}
+    exec*: proc (a1: ptr sqlite3; a2: cstring; a3: sqlite3_callback;
+                 a4: pointer; a5: ptr cstring): cint {.sqlitedecl.}
+    expired*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    finalize*: proc (pStmt: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    free*: proc (a1: pointer) {.sqlitedecl.}
+    free_table*: proc (result: ptr cstring) {.sqlitedecl.}
+    get_autocommit*: proc (a1: ptr sqlite3): cint {.sqlitedecl.}
+    get_auxdata*: proc (a1: ptr sqlite3_context; a2: cint): pointer {.sqlitedecl.}
+    get_table*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr ptr cstring;
+                      a4: ptr cint; a5: ptr cint; a6: ptr cstring): cint {.sqlitedecl.}
+    global_recover*: proc (): cint {.sqlitedecl.}
+    interruptx*: proc (a1: ptr sqlite3) {.sqlitedecl.}
+    last_insert_rowid*: proc (a1: ptr sqlite3): int64 {.sqlitedecl.}
+    libversion*: proc (): cstring {.sqlitedecl.}
+    libversion_number*: proc (): cint {.sqlitedecl.}
+    malloc*: proc (a1: cint): pointer {.sqlitedecl.}
+    mprintf*: proc (a1: cstring): cstring {.sqlitedecl, varargs.}
+    open*: proc (a1: cstring; a2: ptr ptr sqlite3): cint {.sqlitedecl.}
+    open16*: proc (a1: pointer; a2: ptr ptr sqlite3): cint {.sqlitedecl.}
+    prepare*: proc (a1: ptr sqlite3; a2: cstring; a3: cint;
+                    a4: ptr ptr sqlite3_stmt; a5: ptr cstring): cint {.sqlitedecl.}
+    prepare16*: proc (a1: ptr sqlite3; a2: pointer; a3: cint;
+                      a4: ptr ptr sqlite3_stmt; a5: ptr pointer): cint {.sqlitedecl.}
+    profile*: proc (a1: ptr sqlite3;
+                    a2: proc (a1: pointer; a2: cstring; a3: uint64) {.sqlitedecl.};
+                    a3: pointer): pointer {.sqlitedecl.}
+    progress_handler*: proc (a1: ptr sqlite3; a2: cint;
+                             a3: proc (a1: pointer): cint {.sqlitedecl.}; a4: pointer) {.
+        sqlitedecl.}
+    realloc*: proc (a1: pointer; a2: cint): pointer {.sqlitedecl.}
+    reset*: proc (pStmt: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    result_blob*: proc (a1: ptr sqlite3_context; a2: pointer; a3: cint;
+                        a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    result_double*: proc (a1: ptr sqlite3_context; a2: cdouble) {.sqlitedecl.}
+    result_error*: proc (a1: ptr sqlite3_context; a2: cstring; a3: cint) {.sqlitedecl.}
+    result_error16*: proc (a1: ptr sqlite3_context; a2: pointer; a3: cint) {.
+        sqlitedecl.}
+    result_int*: proc (a1: ptr sqlite3_context; a2: cint) {.sqlitedecl.}
+    result_int64*: proc (a1: ptr sqlite3_context; a2: int64) {.sqlitedecl.}
+    result_null*: proc (a1: ptr sqlite3_context) {.sqlitedecl.}
+    result_text*: proc (a1: ptr sqlite3_context; a2: cstring; a3: cint;
+                        a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    result_text16*: proc (a1: ptr sqlite3_context; a2: pointer; a3: cint;
+                          a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    result_text16be*: proc (a1: ptr sqlite3_context; a2: pointer; a3: cint;
+                            a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    result_text16le*: proc (a1: ptr sqlite3_context; a2: pointer; a3: cint;
+                            a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    result_value*: proc (a1: ptr sqlite3_context; a2: ptr sqlite3_value) {.sqlitedecl.}
+    rollback_hook*: proc (a1: ptr sqlite3; a2: proc (a1: pointer) {.sqlitedecl.};
+                          a3: pointer): pointer {.sqlitedecl.}
+    set_authorizer*: proc (a1: ptr sqlite3; a2: proc (a1: pointer; a2: cint;
+        a3: cstring; a4: cstring; a5: cstring; a6: cstring): cint {.sqlitedecl.};
+                           a3: pointer): cint {.sqlitedecl.}
+    set_auxdata*: proc (a1: ptr sqlite3_context; a2: cint; a3: pointer;
+                        a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    xsnprintf*: proc (a1: cint; a2: cstring; a3: cstring): cstring {.sqlitedecl,
+        varargs.}
+    step*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    table_column_metadata*: proc (a1: ptr sqlite3; a2: cstring; a3: cstring;
+                                  a4: cstring; a5: ptr cstring; a6: ptr cstring;
+                                  a7: ptr cint; a8: ptr cint; a9: ptr cint): cint {.
+        sqlitedecl.}
+    thread_cleanup*: proc () {.sqlitedecl.}
+    total_changes*: proc (a1: ptr sqlite3): cint {.sqlitedecl.}
+    trace*: proc (a1: ptr sqlite3;
+                  xTrace: proc (a1: pointer; a2: cstring) {.sqlitedecl.}; a3: pointer): pointer {.
+        sqlitedecl.}
+    transfer_bindings*: proc (a1: ptr sqlite3_stmt; a2: ptr sqlite3_stmt): cint {.
+        sqlitedecl.}
+    update_hook*: proc (a1: ptr sqlite3; a2: proc (a1: pointer; a2: cint;
+        a3: cstring; a4: cstring; a5: int64) {.sqlitedecl.}; a3: pointer): pointer {.
+        sqlitedecl.}
+    user_data*: proc (a1: ptr sqlite3_context): pointer {.sqlitedecl.}
+    value_blob*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
+    value_bytes*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
+    value_bytes16*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
+    value_double*: proc (a1: ptr sqlite3_value): cdouble {.sqlitedecl.}
+    value_int*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
+    value_int64*: proc (a1: ptr sqlite3_value): int64 {.sqlitedecl.}
+    value_numeric_type*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
+    value_text*: proc (a1: ptr sqlite3_value): ptr cuchar {.sqlitedecl.}
+    value_text16*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
+    value_text16be*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
+    value_text16le*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
+    value_type*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
+    vmprintf*: proc (a1: cstring; a2: va_list): cstring {.sqlitedecl.} ## ```
+                                                                  ##   Added ???
+                                                                  ## ```
+    overload_function*: proc (a1: ptr sqlite3; zFuncName: cstring; nArg: cint): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Added ???
+                             ## ```
+    prepare_v2*: proc (a1: ptr sqlite3; a2: cstring; a3: cint;
+                       a4: ptr ptr sqlite3_stmt; a5: ptr cstring): cint {.sqlitedecl.} ## ```
+                                                                                  ##   Added by 3.3.13
+                                                                                  ## ```
+    prepare16_v2*: proc (a1: ptr sqlite3; a2: pointer; a3: cint;
+                         a4: ptr ptr sqlite3_stmt; a5: ptr pointer): cint {.
+        sqlitedecl.}
+    clear_bindings*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.} ## ```
+                                                                 ##   Added by 3.4.1
+                                                                 ## ```
+    create_module_v2*: proc (a1: ptr sqlite3; a2: cstring;
+                             a3: ptr sqlite3_module; a4: pointer;
+                             xDestroy: proc (a1: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Added by 3.4.1
+                             ## ```
+    bind_zeroblob*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cint): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Added by 3.5.0
+                             ## ```
+    blob_bytes*: proc (a1: ptr sqlite3_blob): cint {.sqlitedecl.}
+    blob_close*: proc (a1: ptr sqlite3_blob): cint {.sqlitedecl.}
+    blob_open*: proc (a1: ptr sqlite3; a2: cstring; a3: cstring; a4: cstring;
+                      a5: int64; a6: cint; a7: ptr ptr sqlite3_blob): cint {.
+        sqlitedecl.}
+    blob_read*: proc (a1: ptr sqlite3_blob; a2: pointer; a3: cint; a4: cint): cint {.
+        sqlitedecl.}
+    blob_write*: proc (a1: ptr sqlite3_blob; a2: pointer; a3: cint; a4: cint): cint {.
+        sqlitedecl.}
+    create_collation_v2*: proc (a1: ptr sqlite3; a2: cstring; a3: cint;
+                                a4: pointer; a5: proc (a1: pointer; a2: cint;
+        a3: pointer; a4: cint; a5: pointer): cint {.sqlitedecl.};
+                                a6: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
+    file_control*: proc (a1: ptr sqlite3; a2: cstring; a3: cint; a4: pointer): cint {.
+        sqlitedecl.}
+    memory_highwater*: proc (a1: cint): int64 {.sqlitedecl.}
+    memory_used*: proc (): int64 {.sqlitedecl.}
+    mutex_alloc*: proc (a1: cint): ptr sqlite3_mutex {.sqlitedecl.}
+    mutex_enter*: proc (a1: ptr sqlite3_mutex) {.sqlitedecl.}
+    mutex_free*: proc (a1: ptr sqlite3_mutex) {.sqlitedecl.}
+    mutex_leave*: proc (a1: ptr sqlite3_mutex) {.sqlitedecl.}
+    mutex_try*: proc (a1: ptr sqlite3_mutex): cint {.sqlitedecl.}
+    open_v2*: proc (a1: cstring; a2: ptr ptr sqlite3; a3: cint; a4: cstring): cint {.
+        sqlitedecl.}
+    release_memory*: proc (a1: cint): cint {.sqlitedecl.}
+    result_error_nomem*: proc (a1: ptr sqlite3_context) {.sqlitedecl.}
+    result_error_toobig*: proc (a1: ptr sqlite3_context) {.sqlitedecl.}
+    sleep*: proc (a1: cint): cint {.sqlitedecl.}
+    soft_heap_limit*: proc (a1: cint) {.sqlitedecl.}
+    vfs_find*: proc (a1: cstring): ptr sqlite3_vfs {.sqlitedecl.}
+    vfs_register*: proc (a1: ptr sqlite3_vfs; a2: cint): cint {.sqlitedecl.}
+    vfs_unregister*: proc (a1: ptr sqlite3_vfs): cint {.sqlitedecl.}
+    xthreadsafe*: proc (): cint {.sqlitedecl.}
+    result_zeroblob*: proc (a1: ptr sqlite3_context; a2: cint) {.sqlitedecl.}
+    result_error_code*: proc (a1: ptr sqlite3_context; a2: cint) {.sqlitedecl.}
+    test_control*: proc (a1: cint): cint {.sqlitedecl, varargs.}
+    randomness*: proc (a1: cint; a2: pointer) {.sqlitedecl.}
+    context_db_handle*: proc (a1: ptr sqlite3_context): ptr sqlite3 {.sqlitedecl.}
+    extended_result_codes*: proc (a1: ptr sqlite3; a2: cint): cint {.sqlitedecl.}
+    limit*: proc (a1: ptr sqlite3; a2: cint; a3: cint): cint {.sqlitedecl.}
+    next_stmt*: proc (a1: ptr sqlite3; a2: ptr sqlite3_stmt): ptr sqlite3_stmt {.
+        sqlitedecl.}
+    sql*: proc (a1: ptr sqlite3_stmt): cstring {.sqlitedecl.}
+    status*: proc (a1: cint; a2: ptr cint; a3: ptr cint; a4: cint): cint {.sqlitedecl.}
+    backup_finish*: proc (a1: ptr sqlite3_backup): cint {.sqlitedecl.}
+    backup_init*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr sqlite3;
+                        a4: cstring): ptr sqlite3_backup {.sqlitedecl.}
+    backup_pagecount*: proc (a1: ptr sqlite3_backup): cint {.sqlitedecl.}
+    backup_remaining*: proc (a1: ptr sqlite3_backup): cint {.sqlitedecl.}
+    backup_step*: proc (a1: ptr sqlite3_backup; a2: cint): cint {.sqlitedecl.}
+    compileoption_get*: proc (a1: cint): cstring {.sqlitedecl.}
+    compileoption_used*: proc (a1: cstring): cint {.sqlitedecl.}
+    create_function_v2*: proc (a1: ptr sqlite3; a2: cstring; a3: cint; a4: cint;
+                               a5: pointer; xFunc: proc (
+        a1: ptr sqlite3_context; a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.};
+        xStep: proc (a1: ptr sqlite3_context; a2: cint;
+                     a3: ptr ptr sqlite3_value) {.sqlitedecl.};
+                               xFinal: proc (a1: ptr sqlite3_context) {.sqlitedecl.};
+                               xDestroy: proc (a1: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+    db_config*: proc (a1: ptr sqlite3; a2: cint): cint {.sqlitedecl, varargs.}
+    db_mutex*: proc (a1: ptr sqlite3): ptr sqlite3_mutex {.sqlitedecl.}
+    db_status*: proc (a1: ptr sqlite3; a2: cint; a3: ptr cint; a4: ptr cint;
+                      a5: cint): cint {.sqlitedecl.}
+    extended_errcode*: proc (a1: ptr sqlite3): cint {.sqlitedecl.}
+    log*: proc (a1: cint; a2: cstring) {.sqlitedecl, varargs.}
+    soft_heap_limit64*: proc (a1: int64): int64 {.sqlitedecl.}
+    sourceid*: proc (): cstring {.sqlitedecl.}
+    stmt_status*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cint): cint {.sqlitedecl.}
+    strnicmp*: proc (a1: cstring; a2: cstring; a3: cint): cint {.sqlitedecl.}
+    unlock_notify*: proc (a1: ptr sqlite3;
+                          a2: proc (a1: ptr pointer; a2: cint) {.sqlitedecl.};
+                          a3: pointer): cint {.sqlitedecl.}
+    wal_autocheckpoint*: proc (a1: ptr sqlite3; a2: cint): cint {.sqlitedecl.}
+    wal_checkpoint*: proc (a1: ptr sqlite3; a2: cstring): cint {.sqlitedecl.}
+    wal_hook*: proc (a1: ptr sqlite3; a2: proc (a1: pointer; a2: ptr sqlite3;
+        a3: cstring; a4: cint): cint {.sqlitedecl.}; a3: pointer): pointer {.sqlitedecl.}
+    blob_reopen*: proc (a1: ptr sqlite3_blob; a2: int64): cint {.sqlitedecl.}
+    vtab_config*: proc (a1: ptr sqlite3; op: cint): cint {.sqlitedecl, varargs.}
+    vtab_on_conflict*: proc (a1: ptr sqlite3): cint {.sqlitedecl.} ## ```
+                                                              ##   Version 3.7.16 and later
+                                                              ## ```
+    close_v2*: proc (a1: ptr sqlite3): cint {.sqlitedecl.} ## ```
+                                                      ##   Version 3.7.16 and later
+                                                      ## ```
+    db_filename*: proc (a1: ptr sqlite3; a2: cstring): cstring {.sqlitedecl.}
+    db_readonly*: proc (a1: ptr sqlite3; a2: cstring): cint {.sqlitedecl.}
+    db_release_memory*: proc (a1: ptr sqlite3): cint {.sqlitedecl.}
+    errstr*: proc (a1: cint): cstring {.sqlitedecl.}
+    stmt_busy*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    stmt_readonly*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.}
+    stricmp*: proc (a1: cstring; a2: cstring): cint {.sqlitedecl.}
+    uri_boolean*: proc (a1: cstring; a2: cstring; a3: cint): cint {.sqlitedecl.}
+    uri_int64*: proc (a1: cstring; a2: cstring; a3: int64): int64 {.sqlitedecl.}
+    uri_parameter*: proc (a1: cstring; a2: cstring): cstring {.sqlitedecl.}
+    xvsnprintf*: proc (a1: cint; a2: cstring; a3: cstring; a4: va_list): cstring {.
+        sqlitedecl.}
+    wal_checkpoint_v2*: proc (a1: ptr sqlite3; a2: cstring; a3: cint;
+                              a4: ptr cint; a5: ptr cint): cint {.sqlitedecl.} ## ```
+                                                                          ##   Version 3.8.7 and later
+                                                                          ## ```
+    auto_extension*: proc (a1: proc () {.sqlitedecl.}): cint {.sqlitedecl.} ## ```
+                                                                  ##   Version 3.8.7 and later
+                                                                  ## ```
+    bind_blob64*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: pointer; a4: uint64;
+                        a5: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
+    bind_text64*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cstring; a4: uint64;
+                        a5: proc (a1: pointer) {.sqlitedecl.}; a6: cuchar): cint {.
+        sqlitedecl.}
+    cancel_auto_extension*: proc (a1: proc () {.sqlitedecl.}): cint {.sqlitedecl.}
+    load_extension*: proc (a1: ptr sqlite3; a2: cstring; a3: cstring;
+                           a4: ptr cstring): cint {.sqlitedecl.}
+    malloc64*: proc (a1: uint64): pointer {.sqlitedecl.}
+    msize*: proc (a1: pointer): uint64 {.sqlitedecl.}
+    realloc64*: proc (a1: pointer; a2: uint64): pointer {.sqlitedecl.}
+    reset_auto_extension*: proc () {.sqlitedecl.}
+    result_blob64*: proc (a1: ptr sqlite3_context; a2: pointer; a3: uint64;
+                          a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    result_text64*: proc (a1: ptr sqlite3_context; a2: cstring; a3: uint64;
+                          a4: proc (a1: pointer) {.sqlitedecl.}; a5: cuchar) {.sqlitedecl.}
+    strglob*: proc (a1: cstring; a2: cstring): cint {.sqlitedecl.} ## ```
+                                                              ##   Version 3.8.11 and later
+                                                              ## ```
+    value_dup*: proc (a1: ptr sqlite3_value): ptr sqlite3_value {.sqlitedecl.} ## ```
+                                                                          ##   Version 3.8.11 and later
+                                                                          ## ```
+    value_free*: proc (a1: ptr sqlite3_value) {.sqlitedecl.}
+    result_zeroblob64*: proc (a1: ptr sqlite3_context; a2: uint64): cint {.sqlitedecl.}
+    bind_zeroblob64*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: uint64): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.9.0 and later
+                             ## ```
+    value_subtype*: proc (a1: ptr sqlite3_value): cuint {.sqlitedecl.} ## ```
+                                                                  ##   Version 3.9.0 and later
+                                                                  ## ```
+    result_subtype*: proc (a1: ptr sqlite3_context; a2: cuint) {.sqlitedecl.} ## ```
+                                                                         ##   Version 3.10.0 and later
+                                                                         ## ```
+    status64*: proc (a1: cint; a2: ptr int64; a3: ptr int64; a4: cint): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.10.0 and later
+                             ## ```
+    strlike*: proc (a1: cstring; a2: cstring; a3: cuint): cint {.sqlitedecl.}
+    db_cacheflush*: proc (a1: ptr sqlite3): cint {.sqlitedecl.} ## ```
+                                                           ##   Version 3.12.0 and later
+                                                           ## ```
+    system_errno*: proc (a1: ptr sqlite3): cint {.sqlitedecl.} ## ```
+                                                          ##   Version 3.12.0 and later
+                                                          ## ```
+    trace_v2*: proc (a1: ptr sqlite3; a2: cuint; a3: proc (a1: cuint;
+        a2: pointer; a3: pointer; a4: pointer): cint {.sqlitedecl.}; a4: pointer): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.14.0 and later
+                             ## ```
+    expanded_sql*: proc (a1: ptr sqlite3_stmt): cstring {.sqlitedecl.} ## ```
+                                                                  ##   Version 3.18.0 and later
+                                                                  ## ```
+    set_last_insert_rowid*: proc (a1: ptr sqlite3; a2: int64) {.sqlitedecl.} ## ```
+                                                                        ##   Version 3.18.0 and later
+                                                                        ## ```
+    prepare_v3*: proc (a1: ptr sqlite3; a2: cstring; a3: cint; a4: cuint;
+                       a5: ptr ptr sqlite3_stmt; a6: ptr cstring): cint {.sqlitedecl.} ## ```
+                                                                                  ##   Version 3.20.0 and later
+                                                                                  ## ```
+    prepare16_v3*: proc (a1: ptr sqlite3; a2: pointer; a3: cint; a4: cuint;
+                         a5: ptr ptr sqlite3_stmt; a6: ptr pointer): cint {.
+        sqlitedecl.}
+    bind_pointer*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: pointer;
+                         a4: cstring; a5: proc (a1: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+    result_pointer*: proc (a1: ptr sqlite3_context; a2: pointer; a3: cstring;
+                           a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
+    value_pointer*: proc (a1: ptr sqlite3_value; a2: cstring): pointer {.sqlitedecl.}
+    vtab_nochange*: proc (a1: ptr sqlite3_context): cint {.sqlitedecl.}
+    value_nochange*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
+    vtab_collation*: proc (a1: ptr sqlite3_index_info; a2: cint): cstring {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.24.0 and later
+                             ## ```
+    keyword_count*: proc (): cint {.sqlitedecl.} ## ```
+                                            ##   Version 3.24.0 and later
+                                            ## ```
+    keyword_name*: proc (a1: cint; a2: ptr cstring; a3: ptr cint): cint {.sqlitedecl.}
+    keyword_check*: proc (a1: cstring; a2: cint): cint {.sqlitedecl.}
+    str_new*: proc (a1: ptr sqlite3): ptr sqlite3_str {.sqlitedecl.}
+    str_finish*: proc (a1: ptr sqlite3_str): cstring {.sqlitedecl.}
+    str_appendf*: proc (a1: ptr sqlite3_str; zFormat: cstring) {.sqlitedecl, varargs.}
+    str_vappendf*: proc (a1: ptr sqlite3_str; zFormat: cstring; a3: va_list) {.
+        sqlitedecl.}
+    str_append*: proc (a1: ptr sqlite3_str; zIn: cstring; N: cint) {.sqlitedecl.}
+    str_appendall*: proc (a1: ptr sqlite3_str; zIn: cstring) {.sqlitedecl.}
+    str_appendchar*: proc (a1: ptr sqlite3_str; N: cint; C: cchar) {.sqlitedecl.}
+    str_reset*: proc (a1: ptr sqlite3_str) {.sqlitedecl.}
+    str_errcode*: proc (a1: ptr sqlite3_str): cint {.sqlitedecl.}
+    str_length*: proc (a1: ptr sqlite3_str): cint {.sqlitedecl.}
+    str_value*: proc (a1: ptr sqlite3_str): cstring {.sqlitedecl.} ## ```
+                                                              ##   Version 3.25.0 and later
+                                                              ## ```
+    create_window_function*: proc (a1: ptr sqlite3; a2: cstring; a3: cint;
+                                   a4: cint; a5: pointer; xStep: proc (
+        a1: ptr sqlite3_context; a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.};
+        xFinal: proc (a1: ptr sqlite3_context) {.sqlitedecl.}; xValue: proc (
+        a1: ptr sqlite3_context) {.sqlitedecl.}; xInv: proc (a1: ptr sqlite3_context;
+        a2: cint; a3: ptr ptr sqlite3_value) {.sqlitedecl.};
+                                   xDestroy: proc (a1: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.25.0 and later
+                             ## ```
+    normalized_sql*: proc (a1: ptr sqlite3_stmt): cstring {.sqlitedecl.} ## ```
+                                                                    ##   Version 3.26.0 and later
+                                                                    ## ```
+    stmt_isexplain*: proc (a1: ptr sqlite3_stmt): cint {.sqlitedecl.} ## ```
+                                                                 ##   Version 3.28.0 and later
+                                                                 ## ```
+    value_frombind*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.} ## ```
+                                                                  ##   Version 3.30.0 and later
+                                                                  ## ```
+    drop_modules*: proc (a1: ptr sqlite3; a2: ptr cstring): cint {.sqlitedecl.} ## ```
+                                                                           ##   Version 3.30.0 and later
+                                                                           ## ```
+    hard_heap_limit64*: proc (a1: int64): int64 {.sqlitedecl.} ## ```
+                                                          ##   Version 3.31.0 and later
+                                                          ## ```
+    uri_key*: proc (a1: cstring; a2: cint): cstring {.sqlitedecl.}
+    filename_database*: proc (a1: cstring): cstring {.sqlitedecl.}
+    filename_journal*: proc (a1: cstring): cstring {.sqlitedecl.}
+    filename_wal*: proc (a1: cstring): cstring {.sqlitedecl.} ## ```
+                                                         ##   Version 3.32.0 and later
+                                                         ## ```
+    create_filename*: proc (a1: cstring; a2: cstring; a3: cstring; a4: cint;
+                            a5: ptr cstring): cstring {.sqlitedecl.} ## ```
+                                                                ##   Version 3.32.0 and later
+                                                                ## ```
+    free_filename*: proc (a1: cstring) {.sqlitedecl.}
+    database_file_object*: proc (a1: cstring): ptr sqlite3_file {.sqlitedecl.} ## ```
+                                                                          ##   Version 3.34.0 and later
+                                                                          ## ```
+    txn_state*: proc (a1: ptr sqlite3; a2: cstring): cint {.sqlitedecl.} ## ```
+                                                                    ##   Version 3.34.0 and later
+                                                                    ## ```
+    changes64*: proc (a1: ptr sqlite3): int64 {.sqlitedecl.} ## ```
+                                                        ##   Version 3.36.1 and later
+                                                        ## ```
+    total_changes64*: proc (a1: ptr sqlite3): int64 {.sqlitedecl.} ## ```
+                                                              ##   Version 3.37.0 and later
+                                                              ## ```
+    autovacuum_pages*: proc (a1: ptr sqlite3; a2: proc (a1: pointer;
+        a2: cstring; a3: cuint; a4: cuint; a5: cuint): cuint {.sqlitedecl.};
+                             a3: pointer; a4: proc (a1: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.37.0 and later
+                             ## ```
+    error_offset*: proc (a1: ptr sqlite3): cint {.sqlitedecl.} ## ```
+                                                          ##   Version 3.38.0 and later
+                                                          ## ```
+    vtab_rhs_value*: proc (a1: ptr sqlite3_index_info; a2: cint;
+                           a3: ptr ptr sqlite3_value): cint {.sqlitedecl.}
+    vtab_distinct*: proc (a1: ptr sqlite3_index_info): cint {.sqlitedecl.}
+    vtab_in*: proc (a1: ptr sqlite3_index_info; a2: cint; a3: cint): cint {.
+        sqlitedecl.}
+    vtab_in_first*: proc (a1: ptr sqlite3_value; a2: ptr ptr sqlite3_value): cint {.
+        sqlitedecl.}
+    vtab_in_next*: proc (a1: ptr sqlite3_value; a2: ptr ptr sqlite3_value): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Version 3.39.0 and later
+                             ## ```
+    deserialize*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr cuchar; a4: int64;
+                        a5: int64; a6: cuint): cint {.sqlitedecl.} ## ```
+                                                              ##   Version 3.39.0 and later
+                                                              ## ```
+    serialize*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr int64; a4: cuint): ptr cuchar {.
+        sqlitedecl.}
+    db_name*: proc (a1: ptr sqlite3; a2: cint): cstring {.sqlitedecl.} ## ```
+                                                                  ##   Version 3.40.0 and later
+                                                                  ## ```
+    value_encoding*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.} ## ```
+                                                                  ##   Version 3.40.0 and later
+                                                                  ## ```
+  
   sqlite3_filename* = cstring ## ```
                               ##   * CAPI3REF: File Name
                               ##  *
@@ -1290,6 +2053,8 @@ type
                              ##   Create a new auxiliary function
                              ## ```
   
+  sqlite3_loadext_entry* = proc (db: ptr sqlite3; pzErrMsg: ptr cstring;
+                                 pThunk: ptr sqlite3_api_routines): cint {.sqlitedecl.}
 var
   sqlite3_temp_directory* {.importc.}: cstring ## ```
                                                ##   * CAPI3REF: Name Of The Folder Holding Temporary Files
@@ -2119,8 +2884,11 @@ proc sqlite3_mprintf*(a1: cstring): cstring {.importc, sqlitedecl, varargs.}
                                                                        ##  *
                                                                        ##  * See also:  [built-in printf()], [printf() SQL function]
                                                                        ## ```
+proc sqlite3_vmprintf*(a1: cstring; a2: va_list): cstring {.importc, sqlitedecl.}
 proc sqlite3_snprintf*(a1: cint; a2: cstring; a3: cstring): cstring {.importc,
     sqlitedecl, varargs.}
+proc sqlite3_vsnprintf*(a1: cint; a2: cstring; a3: cstring; a4: va_list): cstring {.
+    importc, sqlitedecl.}
 proc sqlite3_malloc*(a1: cint): pointer {.importc, sqlitedecl.}
   ## ```
                                                           ##   * CAPI3REF: Memory Allocation Subsystem
@@ -5445,7 +6213,7 @@ proc sqlite3_enable_load_extension*(db: ptr sqlite3; onoff: cint): cint {.
                     ##  * remains disabled. This will prevent SQL injections from giving attackers
                     ##  * access to extension loading capabilities.
                     ## ```
-proc sqlite3_auto_extension*(xEntryPoint: proc () {.sqlitedecl.}): cint {.importc,
+proc sqlite3_auto_extension*(xEntryPoint: sqlite3_loadext_entry): cint {.importc,
     sqlitedecl.}
   ## ```
            ##   * CAPI3REF: Automatically Load Statically Linked Extensions
@@ -6154,6 +6922,8 @@ proc sqlite3_str_appendf*(a1: ptr sqlite3_str; zFormat: cstring) {.importc,
                     ##  * is recorded in the [sqlite3_str] object and can be recovered by a
                     ##  * subsequent call to [sqlite3_str_errcode(X)].
                     ## ```
+proc sqlite3_str_vappendf*(a1: ptr sqlite3_str; zFormat: cstring; a3: va_list) {.
+    importc, sqlitedecl.}
 proc sqlite3_str_append*(a1: ptr sqlite3_str; zIn: cstring; N: cint) {.importc,
     sqlitedecl.}
 proc sqlite3_str_appendall*(a1: ptr sqlite3_str; zIn: cstring) {.importc, sqlitedecl.}

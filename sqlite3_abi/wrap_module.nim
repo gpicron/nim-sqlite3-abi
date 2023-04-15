@@ -26,11 +26,8 @@ cPlugin:
       of "sqlite_uint64", "sqlite3_uint64": sym.name = "uint64"
 
 #cExclude("stdarg.h")
-cCompile("sqlite3.c")
 
-cImport("sqlite3ext.h", recurse=true, flags="-H", nimfile="sqlite3_gen.nim")
+cImport("sqlite3ext.h", recurse=false, flags="-H", nimfile="sqlite3_module_gen.nim")
 
 
-{.passL: "-lpthread".}
 
-echo sqlite3_libversion()
