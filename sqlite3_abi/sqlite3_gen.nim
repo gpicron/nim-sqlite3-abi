@@ -1,6 +1,6 @@
-# Generated @ 2023-04-08T09:13:27+02:00
+# Generated @ 2023-04-15T17:28:40+02:00
 # Command line:
-#   .nimble/pkgs/nimterop-0.6.13/nimterop/toast --preprocess -m:c --recurse -H --compile+=sqlite3_abi/sqlite3.c --pnim --symOverride=sqlite3_index_info,sqlite_int64,sqlite_uint64,sqlite3_int64,sqlite3_uint64,SQLITE_STATIC,sqlite3_version --nim:/Users/gpicron/.choosenim/toolchains/nim-#devel/bin/nim --pluginSourcePath=/Users/gpicron/.cache/nim/nimterop/cPlugins/nimterop_2309319294.nim /Users/gpicron/Documents/arboratum/projects/ssb2/BPChain/nim-sqlite3-abi/sqlite3_abi/sqlite3ext.h -o /Users/gpicron/Documents/arboratum/projects/ssb2/BPChain/nim-sqlite3-abi/sqlite3_abi/sqlite3_gen.nim
+#   .nimble/pkgs/nimterop-0.6.13/nimterop/toast --preprocess -m:c --recurse -H --pnim --symOverride=sqlite3_index_info,sqlite_int64,sqlite_uint64,sqlite3_int64,sqlite3_uint64,SQLITE_STATIC,sqlite3_version,sqlite3_auto_extension --nim:/Users/gpicron/.choosenim/toolchains/nim-#devel/bin/nim --pluginSourcePath=/Users/gpicron/.cache/nim/nimterop/cPlugins/nimterop_1527737876.nim sqlite3_abi/sqlite3ext.h -o /Users/gpicron/Documents/arboratum/projects/ssb2/BPChain/nim-sqlite3-abi/sqlite3_abi/sqlite3_gen.nim
 
 # const 'SQLITE_EXTERN' has unsupported value 'extern'
 # const 'SQLITE_STDCALL' has unsupported value 'SQLITE_APICALL'
@@ -14,6 +14,7 @@
 # const 'SQLITE_LAST_ERRNO' has unsupported value 'SQLITE_FCNTL_LAST_ERRNO'
 # const 'SQLITE_STATIC' skipped
 # const 'SQLITE_TRANSIENT' has unsupported value '((sqlite3_destructor_type)-1)'
+# proc 'sqlite3_auto_extension' skipped
 # type 'sqlite3_index_info' skipped
 # const 'sqlite3_aggregate_context' has unsupported value 'sqlite3_api->aggregate_context'
 # const 'sqlite3_aggregate_count' has unsupported value 'sqlite3_api->aggregate_count'
@@ -210,7 +211,7 @@
 # const 'sqlite3_uri_parameter' has unsupported value 'sqlite3_api->uri_parameter'
 # const 'sqlite3_uri_vsnprintf' has unsupported value 'sqlite3_api->xvsnprintf'
 # const 'sqlite3_wal_checkpoint_v2' has unsupported value 'sqlite3_api->wal_checkpoint_v2'
-# const 'sqlite3_auto_extension' has unsupported value 'sqlite3_api->auto_extension'
+# const 'sqlite3_auto_extension' skipped
 # const 'sqlite3_bind_blob64' has unsupported value 'sqlite3_api->bind_blob64'
 # const 'sqlite3_bind_text64' has unsupported value 'sqlite3_api->bind_text64'
 # const 'sqlite3_cancel_auto_extension' has unsupported value 'sqlite3_api->cancel_auto_extension'
@@ -296,7 +297,6 @@ when (NimMajor, NimMinor) < (1, 4):
   {.pragma: sqlitedecl, cdecl, gcsafe, raises: [Defect].}
 else:
   {.pragma: sqlitedecl, gcsafe, cdecl, raises: [].}
-{.compile: "sqlite3.c".}
 const
   SQLITE_VERSION* = "3.40.1"
   SQLITE_VERSION_NUMBER* = 3040001
@@ -1512,7 +1512,65 @@ type
                       ##      Virtual table implementations will typically add additional fields
                       ## ```
   
-  sqlite3_index_info* {.importc, bycopy, incompleteStruct, incompleteStruct.} = object
+  sqlite3_index_info* {.bycopy, incompleteStruct.} = object
+    nConstraint*: cint       ## ```
+                             ##   Number of entries in aConstraint
+                             ## ```
+    iColumnConstrained*: cint ## ```
+                              ##   Column constrained.  -1 for ROWID
+                              ## ```
+    op*: cuchar              ## ```
+                             ##   Constraint operator
+                             ## ```
+    usable*: cuchar          ## ```
+                             ##   True if this constraint is usable
+                             ## ```
+    iTermOffset*: cint       ## ```
+                             ##   Used internally - xBestIndex should ignore
+                             ## ```
+    nOrderBy*: cint          ## ```
+                             ##   Number of terms in the ORDER BY clause
+                             ## ```
+    iColumnOrderBy*: cint    ## ```
+                             ##   Column number
+                             ## ```
+    desc*: cuchar            ## ```
+                             ##   True for DESC.  False for ASC.
+                             ## ```
+    argvIndex*: cint         ## ```
+                             ##   if >0, constraint is part of argv to xFilter
+                             ## ```
+    omit*: cuchar            ## ```
+                             ##   Do not code a test for this constraint
+                             ## ```
+    idxNum*: cint            ## ```
+                             ##   Number used to identify the index
+                             ## ```
+    idxStr*: cstring         ## ```
+                             ##   String, possibly obtained from sqlite3_malloc
+                             ## ```
+    needToFreeIdxStr*: cint  ## ```
+                             ##   Free idxStr using sqlite3_free() if true
+                             ## ```
+    orderByConsumed*: cint   ## ```
+                             ##   True if output is already ordered
+                             ## ```
+    estimatedCost*: cdouble ## ```
+                            ##   Estimated cost of using this index 
+                            ##      Fields below are only available in SQLite 3.8.2 and later
+                            ## ```
+    estimatedRows*: int64 ## ```
+                          ##   Estimated number of rows returned 
+                          ##      Fields below are only available in SQLite 3.9.0 and later
+                          ## ```
+    idxFlags*: cint ## ```
+                    ##   Mask of SQLITE_INDEX_SCAN_* flags 
+                    ##      Fields below are only available in SQLite 3.10.0 and later
+                    ## ```
+    colUsed*: uint64         ## ```
+                             ##   Input: Mask of columns used by statement
+                             ## ```
+  
   sqlite3_vtab_cursor* {.bycopy.} = object ## ```
                                             ##   * CAPI3REF: Virtual Table Cursor Object
                                             ##  * KEYWORDS: sqlite3_vtab_cursor {virtual table cursor}
@@ -6213,44 +6271,6 @@ proc sqlite3_enable_load_extension*(db: ptr sqlite3; onoff: cint): cint {.
                     ##  * remains disabled. This will prevent SQL injections from giving attackers
                     ##  * access to extension loading capabilities.
                     ## ```
-proc sqlite3_auto_extension*(xEntryPoint: sqlite3_loadext_entry): cint {.importc,
-    sqlitedecl.}
-  ## ```
-           ##   * CAPI3REF: Automatically Load Statically Linked Extensions
-           ##  *
-           ##  * ^This interface causes the xEntryPoint() function to be invoked for
-           ##  * each new [database connection] that is created.  The idea here is that
-           ##  * xEntryPoint() is the entry point for a statically linked [SQLite extension]
-           ##  * that is to be automatically loaded into all new database connections.
-           ##  *
-           ##  * ^(Even though the function prototype shows that xEntryPoint() takes
-           ##  * no arguments and returns void, SQLite invokes xEntryPoint() with three
-           ##  * arguments and expects an integer result as if the signature of the
-           ##  * entry point where as follows:
-           ##  *
-           ##  * <blockquote><pre>
-           ##  * &nbsp;  int xEntryPoint(
-           ##  * &nbsp;    sqlite3db,
-           ##  * &nbsp;    const char*pzErrMsg,
-           ##  * &nbsp;    const struct sqlite3_api_routinespThunk
-           ##  * &nbsp;  );
-           ##  * </pre></blockquote>)^
-           ##  *
-           ##  * If the xEntryPoint routine encounters an error, it should makepzErrMsg
-           ##  * point to an appropriate error message (obtained from [sqlite3_mprintf()])
-           ##  * and return an appropriate [error code].  ^SQLite ensures thatpzErrMsg
-           ##  * is NULL before calling the xEntryPoint().  ^SQLite will invoke
-           ##  * [sqlite3_free()] onpzErrMsg after xEntryPoint() returns.  ^If any
-           ##  * xEntryPoint() returns an error, the [sqlite3_open()], [sqlite3_open16()],
-           ##  * or [sqlite3_open_v2()] call that provoked the xEntryPoint() will fail.
-           ##  *
-           ##  * ^Calling sqlite3_auto_extension(X) with an entry point X that is already
-           ##  * on the list of automatic extensions is a harmless no-op. ^No entry point
-           ##  * will be called more than once for each database connection that is opened.
-           ##  *
-           ##  * See also: [sqlite3_reset_auto_extension()]
-           ##  * and [sqlite3_cancel_auto_extension()]
-           ## ```
 proc sqlite3_cancel_auto_extension*(xEntryPoint: proc () {.sqlitedecl.}): cint {.
     importc, sqlitedecl.}
   ## ```
