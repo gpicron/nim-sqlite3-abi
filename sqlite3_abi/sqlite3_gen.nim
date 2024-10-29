@@ -1,6 +1,5 @@
-# Generated @ 2023-04-15T17:28:40+02:00
 # Command line:
-#   .nimble/pkgs/nimterop-0.6.13/nimterop/toast --preprocess -m:c --recurse -H --pnim --symOverride=sqlite3_index_info,sqlite_int64,sqlite_uint64,sqlite3_int64,sqlite3_uint64,SQLITE_STATIC,sqlite3_version,sqlite3_auto_extension --nim:/Users/gpicron/.choosenim/toolchains/nim-#devel/bin/nim --pluginSourcePath=/Users/gpicron/.cache/nim/nimterop/cPlugins/nimterop_1527737876.nim sqlite3_abi/sqlite3ext.h -o /Users/gpicron/Documents/arboratum/projects/ssb2/BPChain/nim-sqlite3-abi/sqlite3_abi/sqlite3_gen.nim
+#   ~/.nimble/pkgs/nimterop-#head/nimterop/toast --preprocess -m:c --recurse -H --pnim --symOverride=sqlite3_index_info,sqlite_int64,sqlite_uint64,sqlite3_int64,sqlite3_uint64,SQLITE_STATIC,sqlite3_version,sqlite3_auto_extension --nim:nim --pluginSourcePath=~/.cache/nim/nimterop/cPlugins/nimterop_1527737876.nim sqlite3_abi/sqlite3ext.h -o sqlite3_abi/sqlite3_gen.nim
 
 # const 'SQLITE_EXTERN' has unsupported value 'extern'
 # const 'SQLITE_STDCALL' has unsupported value 'SQLITE_APICALL'
@@ -285,6 +284,10 @@
 # const 'sqlite3_serialize' has unsupported value 'sqlite3_api->serialize'
 # const 'sqlite3_db_name' has unsupported value 'sqlite3_api->db_name'
 # const 'sqlite3_value_encoding' has unsupported value 'sqlite3_api->value_encoding'
+# const 'sqlite3_is_interrupted' has unsupported value 'sqlite3_api->is_interrupted'
+# const 'sqlite3_stmt_explain' has unsupported value 'sqlite3_api->stmt_explain'
+# const 'sqlite3_get_clientdata' has unsupported value 'sqlite3_api->get_clientdata'
+# const 'sqlite3_set_clientdata' has unsupported value 'sqlite3_api->set_clientdata'
 # const 'SQLITE_EXTENSION_INIT1' has unsupported value 'const sqlite3_api_routines *sqlite3_api=0;'
 # const 'SQLITE_EXTENSION_INIT3' has unsupported value 'extern const sqlite3_api_routines *sqlite3_api;'
 {.push hint[ConvFromXtoItselfNotNeeded]: off.}
@@ -296,11 +299,11 @@ type va_list* {.importc, header:"<stdarg.h>".} = object
 when (NimMajor, NimMinor) < (1, 4):
   {.pragma: sqlitedecl, cdecl, gcsafe, raises: [Defect].}
 else:
-  {.pragma: sqlitedecl, gcsafe, cdecl, raises: [].}
+  {.pragma: sqlitedecl, cdecl, gcsafe, raises: [].}
 const
-  SQLITE_VERSION* = "3.40.1"
-  SQLITE_VERSION_NUMBER* = 3040001
-  SQLITE_SOURCE_ID* = "2022-12-28 14:03:47 df5c253c0b3dd24916e4ec7cf77d3db5294cc9fd45ae7b9c5e82ad8197f38a24"
+  SQLITE_VERSION* = "3.47.0"
+  SQLITE_VERSION_NUMBER* = 3047000
+  SQLITE_SOURCE_ID* = "2024-10-21 16:30:22 03a9703e27c44437c39363d0baf82db4ebc94538a0f28411c85dda156f82636e"
   SQLITE_OK* = 0
   SQLITE_ERROR* = 1
   SQLITE_INTERNAL* = 2
@@ -333,155 +336,157 @@ const
   SQLITE_ROW* = 100
   SQLITE_DONE* = 101
   SQLITE_ERROR_MISSING_COLLSEQ* = (
-    SQLITE_ERROR or typeof(SQLITE_ERROR)((1 shl typeof(SQLITE_ERROR)(8))))
+    SQLITE_ERROR or typeof(SQLITE_ERROR)((1 shl typeof(1)(8))))
   SQLITE_ERROR_RETRY* = (
-    SQLITE_ERROR or typeof(SQLITE_ERROR)((2 shl typeof(SQLITE_ERROR)(8))))
+    SQLITE_ERROR or typeof(SQLITE_ERROR)((2 shl typeof(2)(8))))
   SQLITE_ERROR_SNAPSHOT* = (
-    SQLITE_ERROR or typeof(SQLITE_ERROR)((3 shl typeof(SQLITE_ERROR)(8))))
+    SQLITE_ERROR or typeof(SQLITE_ERROR)((3 shl typeof(3)(8))))
   SQLITE_IOERR_READ* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((1 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((1 shl typeof(1)(8))))
   SQLITE_IOERR_SHORT_READ* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((2 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((2 shl typeof(2)(8))))
   SQLITE_IOERR_WRITE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((3 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((3 shl typeof(3)(8))))
   SQLITE_IOERR_FSYNC* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((4 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((4 shl typeof(4)(8))))
   SQLITE_IOERR_DIR_FSYNC* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((5 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((5 shl typeof(5)(8))))
   SQLITE_IOERR_TRUNCATE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((6 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((6 shl typeof(6)(8))))
   SQLITE_IOERR_FSTAT* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((7 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((7 shl typeof(7)(8))))
   SQLITE_IOERR_UNLOCK* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((8 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((8 shl typeof(8)(8))))
   SQLITE_IOERR_RDLOCK* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((9 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((9 shl typeof(9)(8))))
   SQLITE_IOERR_DELETE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((10 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((10 shl typeof(10)(8))))
   SQLITE_IOERR_BLOCKED* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((11 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((11 shl typeof(11)(8))))
   SQLITE_IOERR_NOMEM* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((12 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((12 shl typeof(12)(8))))
   SQLITE_IOERR_ACCESS* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((13 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((13 shl typeof(13)(8))))
   SQLITE_IOERR_CHECKRESERVEDLOCK* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((14 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((14 shl typeof(14)(8))))
   SQLITE_IOERR_LOCK* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((15 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((15 shl typeof(15)(8))))
   SQLITE_IOERR_CLOSE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((16 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((16 shl typeof(16)(8))))
   SQLITE_IOERR_DIR_CLOSE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((17 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((17 shl typeof(17)(8))))
   SQLITE_IOERR_SHMOPEN* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((18 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((18 shl typeof(18)(8))))
   SQLITE_IOERR_SHMSIZE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((19 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((19 shl typeof(19)(8))))
   SQLITE_IOERR_SHMLOCK* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((20 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((20 shl typeof(20)(8))))
   SQLITE_IOERR_SHMMAP* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((21 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((21 shl typeof(21)(8))))
   SQLITE_IOERR_SEEK* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((22 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((22 shl typeof(22)(8))))
   SQLITE_IOERR_DELETE_NOENT* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((23 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((23 shl typeof(23)(8))))
   SQLITE_IOERR_MMAP* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((24 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((24 shl typeof(24)(8))))
   SQLITE_IOERR_GETTEMPPATH* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((25 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((25 shl typeof(25)(8))))
   SQLITE_IOERR_CONVPATH* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((26 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((26 shl typeof(26)(8))))
   SQLITE_IOERR_VNODE* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((27 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((27 shl typeof(27)(8))))
   SQLITE_IOERR_AUTH* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((28 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((28 shl typeof(28)(8))))
   SQLITE_IOERR_BEGIN_ATOMIC* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((29 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((29 shl typeof(29)(8))))
   SQLITE_IOERR_COMMIT_ATOMIC* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((30 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((30 shl typeof(30)(8))))
   SQLITE_IOERR_ROLLBACK_ATOMIC* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((31 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((31 shl typeof(31)(8))))
   SQLITE_IOERR_DATA* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((32 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((32 shl typeof(32)(8))))
   SQLITE_IOERR_CORRUPTFS* = (
-    SQLITE_IOERR or typeof(SQLITE_IOERR)((33 shl typeof(SQLITE_IOERR)(8))))
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((33 shl typeof(33)(8))))
+  SQLITE_IOERR_IN_PAGE* = (
+    SQLITE_IOERR or typeof(SQLITE_IOERR)((34 shl typeof(34)(8))))
   SQLITE_LOCKED_SHAREDCACHE* = (
-    SQLITE_LOCKED or typeof(SQLITE_LOCKED)((1 shl typeof(SQLITE_LOCKED)(8))))
+    SQLITE_LOCKED or typeof(SQLITE_LOCKED)((1 shl typeof(1)(8))))
   SQLITE_LOCKED_VTAB* = (
-    SQLITE_LOCKED or typeof(SQLITE_LOCKED)((2 shl typeof(SQLITE_LOCKED)(8))))
+    SQLITE_LOCKED or typeof(SQLITE_LOCKED)((2 shl typeof(2)(8))))
   SQLITE_BUSY_RECOVERY* = (
-    SQLITE_BUSY or typeof(SQLITE_BUSY)((1 shl typeof(SQLITE_BUSY)(8))))
+    SQLITE_BUSY or typeof(SQLITE_BUSY)((1 shl typeof(1)(8))))
   SQLITE_BUSY_SNAPSHOT* = (
-    SQLITE_BUSY or typeof(SQLITE_BUSY)((2 shl typeof(SQLITE_BUSY)(8))))
+    SQLITE_BUSY or typeof(SQLITE_BUSY)((2 shl typeof(2)(8))))
   SQLITE_BUSY_TIMEOUT* = (
-    SQLITE_BUSY or typeof(SQLITE_BUSY)((3 shl typeof(SQLITE_BUSY)(8))))
-  SQLITE_CANTOPEN_NOTEMPDIR* = (SQLITE_CANTOPEN or
-      typeof(SQLITE_CANTOPEN)((1 shl typeof(SQLITE_CANTOPEN)(8))))
-  SQLITE_CANTOPEN_ISDIR* = (SQLITE_CANTOPEN or
-      typeof(SQLITE_CANTOPEN)((2 shl typeof(SQLITE_CANTOPEN)(8))))
-  SQLITE_CANTOPEN_FULLPATH* = (SQLITE_CANTOPEN or
-      typeof(SQLITE_CANTOPEN)((3 shl typeof(SQLITE_CANTOPEN)(8))))
-  SQLITE_CANTOPEN_CONVPATH* = (SQLITE_CANTOPEN or
-      typeof(SQLITE_CANTOPEN)((4 shl typeof(SQLITE_CANTOPEN)(8))))
-  SQLITE_CANTOPEN_DIRTYWAL* = (SQLITE_CANTOPEN or
-      typeof(SQLITE_CANTOPEN)((5 shl typeof(SQLITE_CANTOPEN)(8))))
-  SQLITE_CANTOPEN_SYMLINK* = (SQLITE_CANTOPEN or
-      typeof(SQLITE_CANTOPEN)((6 shl typeof(SQLITE_CANTOPEN)(8))))
+    SQLITE_BUSY or typeof(SQLITE_BUSY)((3 shl typeof(3)(8))))
+  SQLITE_CANTOPEN_NOTEMPDIR* = (
+    SQLITE_CANTOPEN or typeof(SQLITE_CANTOPEN)((1 shl typeof(1)(8))))
+  SQLITE_CANTOPEN_ISDIR* = (
+    SQLITE_CANTOPEN or typeof(SQLITE_CANTOPEN)((2 shl typeof(2)(8))))
+  SQLITE_CANTOPEN_FULLPATH* = (
+    SQLITE_CANTOPEN or typeof(SQLITE_CANTOPEN)((3 shl typeof(3)(8))))
+  SQLITE_CANTOPEN_CONVPATH* = (
+    SQLITE_CANTOPEN or typeof(SQLITE_CANTOPEN)((4 shl typeof(4)(8))))
+  SQLITE_CANTOPEN_DIRTYWAL* = (
+    SQLITE_CANTOPEN or typeof(SQLITE_CANTOPEN)((5 shl typeof(5)(8))))
+  SQLITE_CANTOPEN_SYMLINK* = (
+    SQLITE_CANTOPEN or typeof(SQLITE_CANTOPEN)((6 shl typeof(6)(8))))
   SQLITE_CORRUPT_VTAB* = (
-    SQLITE_CORRUPT or typeof(SQLITE_CORRUPT)((1 shl typeof(SQLITE_CORRUPT)(8))))
+    SQLITE_CORRUPT or typeof(SQLITE_CORRUPT)((1 shl typeof(1)(8))))
   SQLITE_CORRUPT_SEQUENCE* = (
-    SQLITE_CORRUPT or typeof(SQLITE_CORRUPT)((2 shl typeof(SQLITE_CORRUPT)(8))))
+    SQLITE_CORRUPT or typeof(SQLITE_CORRUPT)((2 shl typeof(2)(8))))
   SQLITE_CORRUPT_INDEX* = (
-    SQLITE_CORRUPT or typeof(SQLITE_CORRUPT)((3 shl typeof(SQLITE_CORRUPT)(8))))
-  SQLITE_READONLY_RECOVERY* = (SQLITE_READONLY or
-      typeof(SQLITE_READONLY)((1 shl typeof(SQLITE_READONLY)(8))))
-  SQLITE_READONLY_CANTLOCK* = (SQLITE_READONLY or
-      typeof(SQLITE_READONLY)((2 shl typeof(SQLITE_READONLY)(8))))
-  SQLITE_READONLY_ROLLBACK* = (SQLITE_READONLY or
-      typeof(SQLITE_READONLY)((3 shl typeof(SQLITE_READONLY)(8))))
-  SQLITE_READONLY_DBMOVED* = (SQLITE_READONLY or
-      typeof(SQLITE_READONLY)((4 shl typeof(SQLITE_READONLY)(8))))
-  SQLITE_READONLY_CANTINIT* = (SQLITE_READONLY or
-      typeof(SQLITE_READONLY)((5 shl typeof(SQLITE_READONLY)(8))))
-  SQLITE_READONLY_DIRECTORY* = (SQLITE_READONLY or
-      typeof(SQLITE_READONLY)((6 shl typeof(SQLITE_READONLY)(8))))
+    SQLITE_CORRUPT or typeof(SQLITE_CORRUPT)((3 shl typeof(3)(8))))
+  SQLITE_READONLY_RECOVERY* = (
+    SQLITE_READONLY or typeof(SQLITE_READONLY)((1 shl typeof(1)(8))))
+  SQLITE_READONLY_CANTLOCK* = (
+    SQLITE_READONLY or typeof(SQLITE_READONLY)((2 shl typeof(2)(8))))
+  SQLITE_READONLY_ROLLBACK* = (
+    SQLITE_READONLY or typeof(SQLITE_READONLY)((3 shl typeof(3)(8))))
+  SQLITE_READONLY_DBMOVED* = (
+    SQLITE_READONLY or typeof(SQLITE_READONLY)((4 shl typeof(4)(8))))
+  SQLITE_READONLY_CANTINIT* = (
+    SQLITE_READONLY or typeof(SQLITE_READONLY)((5 shl typeof(5)(8))))
+  SQLITE_READONLY_DIRECTORY* = (
+    SQLITE_READONLY or typeof(SQLITE_READONLY)((6 shl typeof(6)(8))))
   SQLITE_ABORT_ROLLBACK* = (
-    SQLITE_ABORT or typeof(SQLITE_ABORT)((2 shl typeof(SQLITE_ABORT)(8))))
-  SQLITE_CONSTRAINT_CHECK* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((1 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_COMMITHOOK* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((2 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_FOREIGNKEY* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((3 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_FUNCTION* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((4 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_NOTNULL* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((5 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_PRIMARYKEY* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((6 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_TRIGGER* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((7 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_UNIQUE* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((8 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_VTAB* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((9 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_ROWID* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((10 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_PINNED* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((11 shl typeof(SQLITE_CONSTRAINT)(8))))
-  SQLITE_CONSTRAINT_DATATYPE* = (SQLITE_CONSTRAINT or
-      typeof(SQLITE_CONSTRAINT)((12 shl typeof(SQLITE_CONSTRAINT)(8))))
+    SQLITE_ABORT or typeof(SQLITE_ABORT)((2 shl typeof(2)(8))))
+  SQLITE_CONSTRAINT_CHECK* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((1 shl typeof(1)(8))))
+  SQLITE_CONSTRAINT_COMMITHOOK* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((2 shl typeof(2)(8))))
+  SQLITE_CONSTRAINT_FOREIGNKEY* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((3 shl typeof(3)(8))))
+  SQLITE_CONSTRAINT_FUNCTION* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((4 shl typeof(4)(8))))
+  SQLITE_CONSTRAINT_NOTNULL* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((5 shl typeof(5)(8))))
+  SQLITE_CONSTRAINT_PRIMARYKEY* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((6 shl typeof(6)(8))))
+  SQLITE_CONSTRAINT_TRIGGER* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((7 shl typeof(7)(8))))
+  SQLITE_CONSTRAINT_UNIQUE* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((8 shl typeof(8)(8))))
+  SQLITE_CONSTRAINT_VTAB* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((9 shl typeof(9)(8))))
+  SQLITE_CONSTRAINT_ROWID* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((10 shl typeof(10)(8))))
+  SQLITE_CONSTRAINT_PINNED* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((11 shl typeof(11)(8))))
+  SQLITE_CONSTRAINT_DATATYPE* = (
+    SQLITE_CONSTRAINT or typeof(SQLITE_CONSTRAINT)((12 shl typeof(12)(8))))
   SQLITE_NOTICE_RECOVER_WAL* = (
-    SQLITE_NOTICE or typeof(SQLITE_NOTICE)((1 shl typeof(SQLITE_NOTICE)(8))))
+    SQLITE_NOTICE or typeof(SQLITE_NOTICE)((1 shl typeof(1)(8))))
   SQLITE_NOTICE_RECOVER_ROLLBACK* = (
-    SQLITE_NOTICE or typeof(SQLITE_NOTICE)((2 shl typeof(SQLITE_NOTICE)(8))))
+    SQLITE_NOTICE or typeof(SQLITE_NOTICE)((2 shl typeof(2)(8))))
+  SQLITE_NOTICE_RBU* = (
+    SQLITE_NOTICE or typeof(SQLITE_NOTICE)((3 shl typeof(3)(8))))
   SQLITE_WARNING_AUTOINDEX* = (
-    SQLITE_WARNING or typeof(SQLITE_WARNING)((1 shl typeof(SQLITE_WARNING)(8))))
-  SQLITE_AUTH_USER* = (
-    SQLITE_AUTH or typeof(SQLITE_AUTH)((1 shl typeof(SQLITE_AUTH)(8))))
+    SQLITE_WARNING or typeof(SQLITE_WARNING)((1 shl typeof(1)(8))))
+  SQLITE_AUTH_USER* = (SQLITE_AUTH or typeof(SQLITE_AUTH)((1 shl typeof(1)(8))))
   SQLITE_OK_LOAD_PERMANENTLY* = (
-    SQLITE_OK or typeof(SQLITE_OK)((1 shl typeof(SQLITE_OK)(8))))
-  SQLITE_OK_SYMLINK* = (
-    SQLITE_OK or typeof(SQLITE_OK)((2 shl typeof(SQLITE_OK)(8))))
+    SQLITE_OK or typeof(SQLITE_OK)((1 shl typeof(1)(8))))
+  SQLITE_OK_SYMLINK* = (SQLITE_OK or typeof(SQLITE_OK)((2 shl typeof(2)(8))))
   SQLITE_OPEN_READONLY* = 0x00000001
   SQLITE_OPEN_READWRITE* = 0x00000002
   SQLITE_OPEN_CREATE* = 0x00000004
@@ -605,6 +610,7 @@ const
   SQLITE_CONFIG_SMALL_MALLOC* = 27
   SQLITE_CONFIG_SORTERREF_SIZE* = 28
   SQLITE_CONFIG_MEMDB_MAXSIZE* = 29
+  SQLITE_CONFIG_ROWID_IN_VIEW* = 30
   SQLITE_DBCONFIG_MAINDBNAME* = 1000
   SQLITE_DBCONFIG_LOOKASIDE* = 1001
   SQLITE_DBCONFIG_ENABLE_FKEY* = 1002
@@ -623,7 +629,9 @@ const
   SQLITE_DBCONFIG_ENABLE_VIEW* = 1015
   SQLITE_DBCONFIG_LEGACY_FILE_FORMAT* = 1016
   SQLITE_DBCONFIG_TRUSTED_SCHEMA* = 1017
-  SQLITE_DBCONFIG_MAX* = 1017
+  SQLITE_DBCONFIG_STMT_SCANSTATUS* = 1018
+  SQLITE_DBCONFIG_REVERSE_SCANORDER* = 1019
+  SQLITE_DBCONFIG_MAX* = 1019
   SQLITE_DENY* = 1
   SQLITE_IGNORE* = 2
   SQLITE_CREATE_INDEX* = 1
@@ -695,12 +703,15 @@ const
   SQLITE_DIRECTONLY* = 0x00080000
   SQLITE_SUBTYPE* = 0x00100000
   SQLITE_INNOCUOUS* = 0x00200000
+  SQLITE_RESULT_SUBTYPE* = 0x01000000
+  SQLITE_SELFORDER1* = 0x02000000
   SQLITE_WIN32_DATA_DIRECTORY_TYPE* = 1
   SQLITE_WIN32_TEMP_DIRECTORY_TYPE* = 2
   SQLITE_TXN_NONE* = 0
   SQLITE_TXN_READ* = 1
   SQLITE_TXN_WRITE* = 2
-  SQLITE_INDEX_SCAN_UNIQUE* = 1
+  SQLITE_INDEX_SCAN_UNIQUE* = 0x00000001
+  SQLITE_INDEX_SCAN_HEX* = 0x00000002
   SQLITE_INDEX_CONSTRAINT_EQ* = 2
   SQLITE_INDEX_CONSTRAINT_GT* = 4
   SQLITE_INDEX_CONSTRAINT_LE* = 8
@@ -739,6 +750,7 @@ const
   SQLITE_TESTCTRL_PRNG_SAVE* = 5
   SQLITE_TESTCTRL_PRNG_RESTORE* = 6
   SQLITE_TESTCTRL_PRNG_RESET* = 7
+  SQLITE_TESTCTRL_FK_NO_ACTION* = 7
   SQLITE_TESTCTRL_BITVEC_TEST* = 8
   SQLITE_TESTCTRL_FAULT_INSTALL* = 9
   SQLITE_TESTCTRL_BENIGN_MALLOC_HOOKS* = 10
@@ -746,8 +758,10 @@ const
   SQLITE_TESTCTRL_ASSERT* = 12
   SQLITE_TESTCTRL_ALWAYS* = 13
   SQLITE_TESTCTRL_RESERVE* = 14
+  SQLITE_TESTCTRL_JSON_SELFCHECK* = 14
   SQLITE_TESTCTRL_OPTIMIZATIONS* = 15
   SQLITE_TESTCTRL_ISKEYWORD* = 16
+  SQLITE_TESTCTRL_GETOPT* = 16
   SQLITE_TESTCTRL_SCRATCHMALLOC* = 17
   SQLITE_TESTCTRL_INTERNAL_FUNCTIONS* = 17
   SQLITE_TESTCTRL_LOCALTIME_FAULT* = 18
@@ -767,7 +781,8 @@ const
   SQLITE_TESTCTRL_TRACEFLAGS* = 31
   SQLITE_TESTCTRL_TUNE* = 32
   SQLITE_TESTCTRL_LOGEST* = 33
-  SQLITE_TESTCTRL_LAST* = 33
+  SQLITE_TESTCTRL_USELONGDOUBLE* = 34
+  SQLITE_TESTCTRL_LAST* = 34
   SQLITE_STATUS_MEMORY_USED* = 0
   SQLITE_STATUS_PAGECACHE_USED* = 1
   SQLITE_STATUS_PAGECACHE_OVERFLOW* = 2
@@ -808,6 +823,7 @@ const
   SQLITE_VTAB_CONSTRAINT_SUPPORT* = 1
   SQLITE_VTAB_INNOCUOUS* = 2
   SQLITE_VTAB_DIRECTONLY* = 3
+  SQLITE_VTAB_USES_ALL_SCHEMAS* = 4
   SQLITE_ROLLBACK* = 1
   SQLITE_FAIL* = 3
   SQLITE_REPLACE* = 5
@@ -817,6 +833,9 @@ const
   SQLITE_SCANSTAT_NAME* = 3
   SQLITE_SCANSTAT_EXPLAIN* = 4
   SQLITE_SCANSTAT_SELECTID* = 5
+  SQLITE_SCANSTAT_PARENTID* = 6
+  SQLITE_SCANSTAT_NCYCLE* = 7
+  SQLITE_SCANSTAT_COMPLEX* = 0x00000001
   SQLITE_SERIALIZE_NOCOPY* = 0x00000001
   SQLITE_DESERIALIZE_FREEONCLOSE* = 1
   SQLITE_DESERIALIZE_RESIZEABLE* = 2
@@ -945,7 +964,7 @@ type
         sqlitedecl.}
     column_table_name*: proc (a1: ptr sqlite3_stmt; a2: cint): cstring {.sqlitedecl.}
     column_table_name16*: proc (a1: ptr sqlite3_stmt; a2: cint): pointer {.sqlitedecl.}
-    column_text*: proc (a1: ptr sqlite3_stmt; iCol: cint): ptr cuchar {.sqlitedecl.}
+    column_text*: proc (a1: ptr sqlite3_stmt; iCol: cint): ptr uint8 {.sqlitedecl.}
     column_text16*: proc (a1: ptr sqlite3_stmt; iCol: cint): pointer {.sqlitedecl.}
     column_type*: proc (a1: ptr sqlite3_stmt; iCol: cint): cint {.sqlitedecl.}
     column_value*: proc (a1: ptr sqlite3_stmt; iCol: cint): ptr sqlite3_value {.
@@ -1062,7 +1081,7 @@ type
     value_int*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
     value_int64*: proc (a1: ptr sqlite3_value): int64 {.sqlitedecl.}
     value_numeric_type*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.}
-    value_text*: proc (a1: ptr sqlite3_value): ptr cuchar {.sqlitedecl.}
+    value_text*: proc (a1: ptr sqlite3_value): ptr uint8 {.sqlitedecl.}
     value_text16*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
     value_text16be*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
     value_text16le*: proc (a1: ptr sqlite3_value): pointer {.sqlitedecl.}
@@ -1201,7 +1220,7 @@ type
     bind_blob64*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: pointer; a4: uint64;
                         a5: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
     bind_text64*: proc (a1: ptr sqlite3_stmt; a2: cint; a3: cstring; a4: uint64;
-                        a5: proc (a1: pointer) {.sqlitedecl.}; a6: cuchar): cint {.
+                        a5: proc (a1: pointer) {.sqlitedecl.}; a6: uint8): cint {.
         sqlitedecl.}
     cancel_auto_extension*: proc (a1: proc () {.sqlitedecl.}): cint {.sqlitedecl.}
     load_extension*: proc (a1: ptr sqlite3; a2: cstring; a3: cstring;
@@ -1213,7 +1232,7 @@ type
     result_blob64*: proc (a1: ptr sqlite3_context; a2: pointer; a3: uint64;
                           a4: proc (a1: pointer) {.sqlitedecl.}) {.sqlitedecl.}
     result_text64*: proc (a1: ptr sqlite3_context; a2: cstring; a3: uint64;
-                          a4: proc (a1: pointer) {.sqlitedecl.}; a5: cuchar) {.sqlitedecl.}
+                          a4: proc (a1: pointer) {.sqlitedecl.}; a5: uint8) {.sqlitedecl.}
     strglob*: proc (a1: cstring; a2: cstring): cint {.sqlitedecl.} ## ```
                                                               ##   Version 3.8.11 and later
                                                               ## ```
@@ -1360,11 +1379,11 @@ type
         sqlitedecl.}              ## ```
                              ##   Version 3.39.0 and later
                              ## ```
-    deserialize*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr cuchar; a4: int64;
+    deserialize*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr uint8; a4: int64;
                         a5: int64; a6: cuint): cint {.sqlitedecl.} ## ```
                                                               ##   Version 3.39.0 and later
                                                               ## ```
-    serialize*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr int64; a4: cuint): ptr cuchar {.
+    serialize*: proc (a1: ptr sqlite3; a2: cstring; a3: ptr int64; a4: cuint): ptr uint8 {.
         sqlitedecl.}
     db_name*: proc (a1: ptr sqlite3; a2: cint): cstring {.sqlitedecl.} ## ```
                                                                   ##   Version 3.40.0 and later
@@ -1372,7 +1391,18 @@ type
     value_encoding*: proc (a1: ptr sqlite3_value): cint {.sqlitedecl.} ## ```
                                                                   ##   Version 3.40.0 and later
                                                                   ## ```
-  
+    is_interrupted*: proc (a1: ptr sqlite3): cint {.sqlitedecl.} ## ```
+                                                            ##   Version 3.41.0 and later
+                                                            ## ```
+    stmt_explain*: proc (a1: ptr sqlite3_stmt; a2: cint): cint {.sqlitedecl.} ## ```
+                                                                         ##   Version 3.43.0 and later
+                                                                         ## ```
+    get_clientdata*: proc (a1: ptr sqlite3; a2: cstring): pointer {.sqlitedecl.} ## ```
+                                                                            ##   Version 3.44.0 and later
+                                                                            ## ```
+    set_clientdata*: proc (a1: ptr sqlite3; a2: cstring; a3: pointer;
+                           a4: proc (a1: pointer) {.sqlitedecl.}): cint {.sqlitedecl.}
+
   sqlite3_filename* = cstring ## ```
                               ##   * CAPI3REF: File Name
                               ##  *
@@ -1657,6 +1687,12 @@ type
                                                      ##   The methods above are in versions 1 and 2 of the sqlite_module object.
                                                      ##    * Those below are for version 3 and greater.
                                                      ## ```
+    xIntegrity*: proc (pVTab: ptr sqlite3_vtab; zSchema: cstring;
+                       zTabName: cstring; mFlags: cint; pzErr: ptr cstring): cint {.
+        sqlitedecl.} ## ```
+                ##   The methods above are in versions 1 through 3 of the sqlite_module object.
+                ##    * Those below are for version 4 and greater.
+                ## ```
   
   sqlite3_blob* {.incompleteStruct.} = object
   sqlite3_mutex_methods* {.bycopy.} = object
@@ -1735,7 +1771,7 @@ type
                                          ##  * transaction that sees that historical version of the database rather than
                                          ##  * the most recent version.
                                          ## ```
-    hidden*: array[48, cuchar]
+    hidden*: array[48, uint8]
 
   sqlite3_rtree_geometry* {.bycopy.} = object ## ```
                                                ##   * A pointer to a structure of the following type is passed as the first
@@ -1821,8 +1857,8 @@ type
                                          ##   * EXTENSION API FUNCTIONS
                                          ##  *
                                          ##  * xUserData(pFts):
-                                         ##  *   Return a copy of the context pointer the extension function was
-                                         ##  *   registered with.
+                                         ##  *   Return a copy of the pUserData pointer passed to the xCreateFunction()
+                                         ##  *   API when the extension function was registered.
                                          ##  *
                                          ##  * xColumnTotalSize(pFts, iCol, pnToken):
                                          ##  *   If parameter iCol is less than zero, set output variablepnToken
@@ -1854,8 +1890,11 @@ type
                                          ##  *   created with the "columnsize=0" option.
                                          ##  *
                                          ##  * xColumnText:
-                                         ##  *   This function attempts to retrieve the text of column iCol of the
-                                         ##  *   current document. If successful, (*pz) is set to point to a buffer
+                                         ##  *   If parameter iCol is less than zero, or greater than or equal to the
+                                         ##  *   number of columns in the table, SQLITE_RANGE is returned.
+                                         ##  *
+                                         ##  *   Otherwise, this function attempts to retrieve the text of column iCol of
+                                         ##  *   the current document. If successful, (*pz) is set to point to a buffer
                                          ##  *   containing the text in utf-8 encoding, (*pn) is set to the size in bytes
                                          ##  *   (not characters) of the buffer and SQLITE_OK is returned. Otherwise,
                                          ##  *   if an error occurs, an SQLite error code is returned and the final values
@@ -1865,8 +1904,10 @@ type
                                          ##  *   Returns the number of phrases in the current query expression.
                                          ##  *
                                          ##  * xPhraseSize:
-                                         ##  *   Returns the number of tokens in phrase iPhrase of the query. Phrases
-                                         ##  *   are numbered starting from zero.
+                                         ##  *   If parameter iCol is less than zero, or greater than or equal to the
+                                         ##  *   number of phrases in the current query, as returned by xPhraseCount,
+                                         ##  *   0 is returned. Otherwise, this function returns the number of tokens in
+                                         ##  *   phrase iPhrase of the query. Phrases are numbered starting from zero.
                                          ##  *
                                          ##  * xInstCount:
                                          ##  *   SetpnInst to the total number of occurrences of all phrases within
@@ -1882,12 +1923,13 @@ type
                                          ##  *   Query for the details of phrase match iIdx within the current row.
                                          ##  *   Phrase matches are numbered starting from zero, so the iIdx argument
                                          ##  *   should be greater than or equal to zero and smaller than the value
-                                         ##  *   output by xInstCount().
+                                         ##  *   output by xInstCount(). If iIdx is less than zero or greater than
+                                         ##  *   or equal to the value returned by xInstCount(), SQLITE_RANGE is returned.
                                          ##  *
-                                         ##  *   Usually, output parameterpiPhrase is set to the phrase number,piCol
+                                         ##  *   Otherwise, output parameterpiPhrase is set to the phrase number,piCol
                                          ##  *   to the column in which it occurs andpiOff the token offset of the
-                                         ##  *   first token of the phrase. Returns SQLITE_OK if successful, or an error
-                                         ##  *   code (i.e. SQLITE_NOMEM) if an error occurs.
+                                         ##  *   first token of the phrase. SQLITE_OK is returned if successful, or an
+                                         ##  *   error code (i.e. SQLITE_NOMEM) if an error occurs.
                                          ##  *
                                          ##  *   This API can be quite slow if used with an FTS5 table created with the
                                          ##  *   "detail=none" or "detail=column" option.
@@ -1912,6 +1954,10 @@ type
                                          ##  *   function may be used to access the properties of each matched row.
                                          ##  *   Invoking Api.xUserData() returns a copy of the pointer passed as
                                          ##  *   the third argument to pUserData.
+                                         ##  *
+                                         ##  *   If parameter iPhrase is less than zero, or greater than or equal to
+                                         ##  *   the number of phrases in the query, as returned by xPhraseCount(),
+                                         ##  *   this function returns SQLITE_RANGE.
                                          ##  *
                                          ##  *   If the callback function returns any value other than SQLITE_OK, the
                                          ##  *   query is abandoned and the xQueryPhrase function returns immediately.
@@ -1994,6 +2040,10 @@ type
                                          ##  *   (i.e. if it is a contentless table), then this API always iterates
                                          ##  *   through an empty set (all calls to xPhraseFirst() set iCol to -1).
                                          ##  *
+                                         ##  *   In all cases, matches are visited in (column ASC, offset ASC) order.
+                                         ##  *   i.e. all those in column 0, sorted by offset, followed by those in
+                                         ##  *   column 1, etc.
+                                         ##  *
                                          ##  * xPhraseNext()
                                          ##  *   See xPhraseFirst above.
                                          ##  *
@@ -2027,9 +2077,65 @@ type
                                          ##  *
                                          ##  * xPhraseNextColumn()
                                          ##  *   See xPhraseFirstColumn above.
+                                         ##  *
+                                         ##  * xQueryToken(pFts5, iPhrase, iToken, ppToken, pnToken)
+                                         ##  *   This is used to access token iToken of phrase iPhrase of the current
+                                         ##  *   query. Before returning, output parameterppToken is set to point
+                                         ##  *   to a buffer containing the requested token, andpnToken to the
+                                         ##  *   size of this buffer in bytes.
+                                         ##  *
+                                         ##  *   If iPhrase or iToken are less than zero, or if iPhrase is greater than
+                                         ##  *   or equal to the number of phrases in the query as reported by
+                                         ##  *   xPhraseCount(), or if iToken is equal to or greater than the number of
+                                         ##  *   tokens in the phrase, SQLITE_RANGE is returned andppToken andpnToken
+                                         ##        are both zeroed.
+                                         ##  *
+                                         ##  *   The output text is not a copy of the query text that specified the
+                                         ##  *   token. It is the output of the tokenizer module. For tokendata=1
+                                         ##  *   tables, this includes any embedded 0x00 and trailing data.
+                                         ##  *
+                                         ##  * xInstToken(pFts5, iIdx, iToken, ppToken, pnToken)
+                                         ##  *   This is used to access token iToken of phrase hit iIdx within the
+                                         ##  *   current row. If iIdx is less than zero or greater than or equal to the
+                                         ##  *   value returned by xInstCount(), SQLITE_RANGE is returned.  Otherwise,
+                                         ##  *   output variable (*ppToken) is set to point to a buffer containing the
+                                         ##  *   matching document token, and (*pnToken) to the size of that buffer in
+                                         ##  *   bytes. This API is not available if the specified token matches a
+                                         ##  *   prefix query term. In that case both output variables are always set
+                                         ##  *   to 0.
+                                         ##  *
+                                         ##  *   The output text is not a copy of the document text that was tokenized.
+                                         ##  *   It is the output of the tokenizer module. For tokendata=1 tables, this
+                                         ##  *   includes any embedded 0x00 and trailing data.
+                                         ##  *
+                                         ##  *   This API can be quite slow if used with an FTS5 table created with the
+                                         ##  *   "detail=none" or "detail=column" option.
+                                         ##  *
+                                         ##  * xColumnLocale(pFts5, iIdx, pzLocale, pnLocale)
+                                         ##  *   If parameter iCol is less than zero, or greater than or equal to the
+                                         ##  *   number of columns in the table, SQLITE_RANGE is returned.
+                                         ##  *
+                                         ##  *   Otherwise, this function attempts to retrieve the locale associated
+                                         ##  *   with column iCol of the current row. Usually, there is no associated
+                                         ##  *   locale, and output parameters (*pzLocale) and (*pnLocale) are set
+                                         ##  *   to NULL and 0, respectively. However, if the fts5_locale() function
+                                         ##  *   was used to associate a locale with the value when it was inserted
+                                         ##  *   into the fts5 table, then (*pzLocale) is set to point to a nul-terminated
+                                         ##  *   buffer containing the name of the locale in utf-8 encoding. (*pnLocale)
+                                         ##  *   is set to the size in bytes of the buffer, not including the
+                                         ##  *   nul-terminator.
+                                         ##  *
+                                         ##  *   If successful, SQLITE_OK is returned. Or, if an error occurs, an
+                                         ##  *   SQLite error code is returned. The final value of the output parameters
+                                         ##  *   is undefined in this case.
+                                         ##  *
+                                         ##  * xTokenize_v2:
+                                         ##  *   Tokenize text using the tokenizer belonging to the FTS5 table. This
+                                         ##  *   API is the same as the xTokenize() API, except that it allows a tokenizer
+                                         ##  *   locale to be specified.
                                          ## ```
     iVersion*: cint          ## ```
-                             ##   Currently always set to 3
+                             ##   Currently always set to 4
                              ## ```
     xUserData*: proc (a1: ptr Fts5Context): pointer {.sqlitedecl.}
     xColumnCount*: proc (a1: ptr Fts5Context): cint {.sqlitedecl.}
@@ -2066,17 +2172,44 @@ type
         sqlitedecl.}
     xPhraseNextColumn*: proc (a1: ptr Fts5Context; a2: ptr Fts5PhraseIter;
                               piCol: ptr cint) {.sqlitedecl.}
+    xQueryToken*: proc (a1: ptr Fts5Context; iPhrase: cint; iToken: cint;
+                        ppToken: ptr cstring; pnToken: ptr cint): cint {.sqlitedecl.} ## ```
+                                                                                 ##   Below this point are iVersion>=3 only
+                                                                                 ## ```
+    xInstToken*: proc (a1: ptr Fts5Context; iIdx: cint; iToken: cint;
+                       a4: ptr cstring; a5: ptr cint): cint {.sqlitedecl.}
+    xColumnLocale*: proc (a1: ptr Fts5Context; iCol: cint; pz: ptr cstring;
+                          pn: ptr cint): cint {.sqlitedecl.} ## ```
+                                                        ##   Below this point are iVersion>=4 only
+                                                        ## ```
+    xTokenize_v2*: proc (a1: ptr Fts5Context; pText: cstring; nText: cint;
+                         pLocale: cstring; nLocale: cint; pCtx: pointer; xToken: proc (
+        a1: pointer; a2: cint; a3: cstring; a4: cint; a5: cint; a6: cint): cint {.
+        sqlitedecl.}): cint {.sqlitedecl.}
 
   Fts5Context* {.incompleteStruct.} = object
   Fts5PhraseIter* {.bycopy.} = object
-    a*: ptr cuchar
-    b*: ptr cuchar
+    a*: ptr uint8
+    b*: ptr uint8
 
   fts5_extension_function* = proc (pApi: ptr Fts5ExtensionApi;
                                    pFts: ptr Fts5Context;
                                    pCtx: ptr sqlite3_context; nVal: cint;
                                    apVal: ptr ptr sqlite3_value) {.sqlitedecl.}
   Fts5Tokenizer* {.incompleteStruct.} = object
+  fts5_tokenizer_v2* {.bycopy.} = object
+    iVersion*: cint          ## ```
+                             ##   Currently always 2
+                             ## ```
+    xCreate*: proc (a1: pointer; azArg: ptr cstring; nArg: cint;
+                    ppOut: ptr ptr Fts5Tokenizer): cint {.sqlitedecl.}
+    xDelete*: proc (a1: ptr Fts5Tokenizer) {.sqlitedecl.}
+    xTokenize*: proc (a1: ptr Fts5Tokenizer; pCtx: pointer; flags: cint;
+                      pText: cstring; nText: cint; pLocale: cstring;
+                      nLocale: cint; xToken: proc (pCtx: pointer; tflags: cint;
+        pToken: cstring; nToken: cint; iStart: cint; iEnd: cint): cint {.sqlitedecl.}): cint {.
+        sqlitedecl.}
+
   fts5_tokenizer* {.bycopy.} = object
     xCreate*: proc (a1: pointer; azArg: ptr cstring; nArg: cint;
                     ppOut: ptr ptr Fts5Tokenizer): cint {.sqlitedecl.}
@@ -2088,27 +2221,41 @@ type
 
   fts5_api* {.bycopy.} = object
     iVersion*: cint          ## ```
-                             ##   Currently always set to 2 
+                             ##   Currently always set to 3 
                              ##      Create a new tokenizer
                              ## ```
     xCreateTokenizer*: proc (pApi: ptr fts5_api; zName: cstring;
-                             pContext: pointer; pTokenizer: ptr fts5_tokenizer;
+                             pUserData: pointer; pTokenizer: ptr fts5_tokenizer;
                              xDestroy: proc (a1: pointer) {.sqlitedecl.}): cint {.
         sqlitedecl.}              ## ```
-                             ##   Currently always set to 2 
+                             ##   Currently always set to 3 
                              ##      Create a new tokenizer
                              ## ```
     xFindTokenizer*: proc (pApi: ptr fts5_api; zName: cstring;
-                           ppContext: ptr pointer;
+                           ppUserData: ptr pointer;
                            pTokenizer: ptr fts5_tokenizer): cint {.sqlitedecl.} ## ```
                                                                            ##   Find an existing tokenizer
                                                                            ## ```
     xCreateFunction*: proc (pApi: ptr fts5_api; zName: cstring;
-                            pContext: pointer;
+                            pUserData: pointer;
                             xFunction: fts5_extension_function;
                             xDestroy: proc (a1: pointer) {.sqlitedecl.}): cint {.
         sqlitedecl.}              ## ```
                              ##   Create a new auxiliary function
+                             ## ```
+    xCreateTokenizer_v2*: proc (pApi: ptr fts5_api; zName: cstring;
+                                pUserData: pointer;
+                                pTokenizer: ptr fts5_tokenizer_v2;
+                                xDestroy: proc (a1: pointer) {.sqlitedecl.}): cint {.
+        sqlitedecl.} ## ```
+                ##   APIs below this point are only available if iVersion>=3 
+                ##      Create a new tokenizer
+                ## ```
+    xFindTokenizer_v2*: proc (pApi: ptr fts5_api; zName: cstring;
+                              ppUserData: ptr pointer;
+                              ppTokenizer: ptr ptr fts5_tokenizer_v2): cint {.
+        sqlitedecl.}              ## ```
+                             ##   Find an existing tokenizer
                              ## ```
   
   sqlite3_loadext_entry* = proc (db: ptr sqlite3; pzErrMsg: ptr cstring;
@@ -2354,6 +2501,8 @@ proc sqlite3_exec*(a1: ptr sqlite3; sql: cstring; callback: proc (a1: pointer;
                                                                 ##  *      the 1st parameter to sqlite3_exec() while sqlite3_exec() is running.
                                                                 ##  * <li> The application must not modify the SQL statement text passed into
                                                                 ##  *      the 2nd parameter of sqlite3_exec() while sqlite3_exec() is running.
+                                                                ##  * <li> The application must not dereference the arrays or string pointers
+                                                                ##  *       passed as the 3rd and 4th callback parameters after it returns.
                                                                 ##  * </ul>
                                                                 ## ```
 proc sqlite3_initialize*(): cint {.importc, sqlitedecl.}
@@ -2449,19 +2598,22 @@ proc sqlite3_config*(a1: cint): cint {.importc, sqlitedecl, varargs.}
                                                                 ##  * must ensure that no other SQLite interfaces are invoked by other
                                                                 ##  * threads while sqlite3_config() is running.</b>
                                                                 ##  *
-                                                                ##  * The sqlite3_config() interface
-                                                                ##  * may only be invoked prior to library initialization using
-                                                                ##  * [sqlite3_initialize()] or after shutdown by [sqlite3_shutdown()].
-                                                                ##  * ^If sqlite3_config() is called after [sqlite3_initialize()] and before
-                                                                ##  * [sqlite3_shutdown()] then it will return SQLITE_MISUSE.
-                                                                ##  * Note, however, that ^sqlite3_config() can be called as part of the
-                                                                ##  * implementation of an application-defined [sqlite3_os_init()].
-                                                                ##  *
                                                                 ##  * The first argument to sqlite3_config() is an integer
                                                                 ##  * [configuration option] that determines
                                                                 ##  * what property of SQLite is to be configured.  Subsequent arguments
                                                                 ##  * vary depending on the [configuration option]
                                                                 ##  * in the first argument.
+                                                                ##  *
+                                                                ##  * For most configuration options, the sqlite3_config() interface
+                                                                ##  * may only be invoked prior to library initialization using
+                                                                ##  * [sqlite3_initialize()] or after shutdown by [sqlite3_shutdown()].
+                                                                ##  * The exceptional configuration options that may be invoked at any time
+                                                                ##  * are called "anytime configuration options".
+                                                                ##  * ^If sqlite3_config() is called after [sqlite3_initialize()] and before
+                                                                ##  * [sqlite3_shutdown()] with a first argument that is not an anytime
+                                                                ##  * configuration option, then the sqlite3_config() call will return SQLITE_MISUSE.
+                                                                ##  * Note, however, that ^sqlite3_config() can be called as part of the
+                                                                ##  * implementation of an application-defined [sqlite3_os_init()].
                                                                 ##  *
                                                                 ##  * ^When a configuration option is set, sqlite3_config() returns [SQLITE_OK].
                                                                 ##  * ^If the option is unknown or SQLite is unable to set the option
@@ -2703,7 +2855,12 @@ proc sqlite3_interrupt*(a1: ptr sqlite3) {.importc, sqlitedecl.}
                                                            ##  * ^A call to sqlite3_interrupt(D) that occurs when there are no running
                                                            ##  * SQL statements is a no-op and has no effect on SQL statements
                                                            ##  * that are started after the sqlite3_interrupt() call returns.
+                                                           ##  *
+                                                           ##  * ^The [sqlite3_is_interrupted(D)] interface can be used to determine whether
+                                                           ##  * or not an interrupt is currently in effect for [database connection] D.
+                                                           ##  * It returns 1 if an interrupt is currently in effect, or 0 otherwise.
                                                            ## ```
+proc sqlite3_is_interrupted*(a1: ptr sqlite3): cint {.importc, sqlitedecl.}
 proc sqlite3_complete*(sql: cstring): cint {.importc, sqlitedecl.}
   ## ```
                                                              ##   * CAPI3REF: Determine If An SQL Statement Is Complete
@@ -3171,8 +3328,8 @@ proc sqlite3_trace*(a1: ptr sqlite3;
                     xTrace: proc (a1: pointer; a2: cstring) {.sqlitedecl.};
                     a3: pointer): pointer {.importc, sqlitedecl.}
   ## ```
-                                                            ##   * CAPI3REF: Tracing And Profiling Functions
-                                                            ##  * METHOD: sqlite3
+                                                            ##   * CAPI3REF: Deprecated Tracing And Profiling Functions
+                                                            ##  * DEPRECATED
                                                             ##  *
                                                             ##  * These routines are deprecated. Use the [sqlite3_trace_v2()] interface
                                                             ##  * instead of the routines described here.
@@ -3218,8 +3375,10 @@ proc sqlite3_trace_v2*(a1: ptr sqlite3; uMask: cuint; xCallback: proc (
                                                               ##  * M argument should be the bitwise OR-ed combination of
                                                               ##  * zero or more [SQLITE_TRACE] constants.
                                                               ##  *
-                                                              ##  * ^Each call to either sqlite3_trace() or sqlite3_trace_v2() overrides
-                                                              ##  * (cancels) any prior calls to sqlite3_trace() or sqlite3_trace_v2().
+                                                              ##  * ^Each call to either sqlite3_trace(D,X,P) or sqlite3_trace_v2(D,M,X,P)
+                                                              ##  * overrides (cancels) all prior calls to sqlite3_trace(D,X,P) or
+                                                              ##  * sqlite3_trace_v2(D,M,X,P) for the [database connection] D.  Each
+                                                              ##  * database connection may have at most one trace callback.
                                                               ##  *
                                                               ##  * ^The X callback is invoked whenever any of the events identified by
                                                               ##  * mask M occur.  ^The integer return value from the callback is currently
@@ -3245,7 +3404,7 @@ proc sqlite3_progress_handler*(a1: ptr sqlite3; a2: cint;
                                                               ##  *
                                                               ##  * ^The sqlite3_progress_handler(D,N,X,P) interface causes the callback
                                                               ##  * function X to be invoked periodically during long running calls to
-                                                              ##  * [sqlite3_exec()], [sqlite3_step()] and [sqlite3_get_table()] for
+                                                              ##  * [sqlite3_step()] and [sqlite3_prepare()] and similar for
                                                               ##  * database connection D.  An example use for this
                                                               ##  * interface is to keep a GUI updated during a large query.
                                                               ##  *
@@ -3270,6 +3429,13 @@ proc sqlite3_progress_handler*(a1: ptr sqlite3; a2: cint;
                                                               ##  * Note that [sqlite3_prepare_v2()] and [sqlite3_step()] both modify their
                                                               ##  * database connections for the meaning of "modify" in this paragraph.
                                                               ##  *
+                                                              ##  * The progress handler callback would originally only be invoked from the
+                                                              ##  * bytecode engine.  It still might be invoked during [sqlite3_prepare()]
+                                                              ##  * and similar because those routines might force a reparse of the schema
+                                                              ##  * which involves running the bytecode engine.  However, beginning with
+                                                              ##  * SQLite version 3.41.0, the progress handler callback might also be
+                                                              ##  * invoked directly from [sqlite3_prepare()] while analyzing and generating
+                                                              ##  * code for complex queries.
                                                               ## ```
 proc sqlite3_open*(filename: cstring; ppDb: ptr ptr sqlite3): cint {.importc,
     sqlitedecl.}
@@ -3306,13 +3472,18 @@ proc sqlite3_open*(filename: cstring; ppDb: ptr ptr sqlite3): cint {.importc,
            ##  *
            ##  * <dl>
            ##  * ^(<dt>[SQLITE_OPEN_READONLY]</dt>
-           ##  * <dd>The database is opened in read-only mode.  If the database does not
-           ##  * already exist, an error is returned.</dd>)^
+           ##  * <dd>The database is opened in read-only mode.  If the database does
+           ##  * not already exist, an error is returned.</dd>)^
            ##  *
            ##  * ^(<dt>[SQLITE_OPEN_READWRITE]</dt>
-           ##  * <dd>The database is opened for reading and writing if possible, or reading
-           ##  * only if the file is write protected by the operating system.  In either
-           ##  * case the database must already exist, otherwise an error is returned.</dd>)^
+           ##  * <dd>The database is opened for reading and writing if possible, or
+           ##  * reading only if the file is write protected by the operating
+           ##  * system.  In either case the database must already exist, otherwise
+           ##  * an error is returned.  For historical reasons, if opening in
+           ##  * read-write mode fails due to OS-level permissions, an attempt is
+           ##  * made to open it in read-only mode. [sqlite3_db_readonly()] can be
+           ##  * used to determine whether the database is actually
+           ##  * read-write.</dd>)^
            ##  *
            ##  * ^(<dt>[SQLITE_OPEN_READWRITE] | [SQLITE_OPEN_CREATE]</dt>
            ##  * <dd>The database is opened for reading and writing, and is created if
@@ -3361,8 +3532,8 @@ proc sqlite3_open*(filename: cstring; ppDb: ptr ptr sqlite3): cint {.importc,
            ##  *
            ##  * [[OPEN_EXRESCODE]] ^(<dt>[SQLITE_OPEN_EXRESCODE]</dt>
            ##  * <dd>The database connection comes up in "extended result code mode".
-           ##  * In other words, the database behaves has if
-           ##  * [sqlite3_extended_result_codes(db,1)] where called on the database
+           ##  * In other words, the database behaves as if
+           ##  * [sqlite3_extended_result_codes(db,1)] were called on the database
            ##  * connection as soon as the connection is created. In addition to setting
            ##  * the extended result code mode, this flag also causes [sqlite3_open_v2()]
            ##  * to return an extended result code.</dd>
@@ -3563,7 +3734,7 @@ proc sqlite3_uri_parameter*(z: sqlite3_filename; zParam: cstring): cstring {.
                     ##  * as F) must be one of:
                     ##  * <ul>
                     ##  * <li> A database filename pointer created by the SQLite core and
-                    ##  * passed into the xOpen() method of a VFS implemention, or
+                    ##  * passed into the xOpen() method of a VFS implementation, or
                     ##  * <li> A filename obtained from [sqlite3_db_filename()], or
                     ##  * <li> A new filename constructed using [sqlite3_create_filename()].
                     ##  * </ul>
@@ -3678,7 +3849,7 @@ proc sqlite3_create_filename*(zDatabase: cstring; zJournal: cstring;
   ## ```
                     ##   * CAPI3REF: Create and Destroy VFS Filenames
                     ##  *
-                    ##  * These interfces are provided for use by [VFS shim] implementations and
+                    ##  * These interfaces are provided for use by [VFS shim] implementations and
                     ##  * are not useful outside of that context.
                     ##  *
                     ##  * The sqlite3_create_filename(D,J,W,N,P) allocates memory to hold a version of
@@ -3750,14 +3921,17 @@ proc sqlite3_errcode*(db: ptr sqlite3): cint {.importc, sqlitedecl.}
                                                                ##  * </ul>
                                                                ##  *
                                                                ##  * ^The sqlite3_errmsg() and sqlite3_errmsg16() return English-language
-                                                               ##  * text that describes the error, as either UTF-8 or UTF-16 respectively.
+                                                               ##  * text that describes the error, as either UTF-8 or UTF-16 respectively,
+                                                               ##  * or NULL if no error message is available.
+                                                               ##  * (See how SQLite handles [invalid UTF] for exceptions to this rule.)
                                                                ##  * ^(Memory to hold the error message string is managed internally.
                                                                ##  * The application does not need to worry about freeing the result.
                                                                ##  * However, the error string might be overwritten or deallocated by
                                                                ##  * subsequent calls to other SQLite interface functions.)^
                                                                ##  *
-                                                               ##  * ^The sqlite3_errstr() interface returns the English-language text
-                                                               ##  * that describes the [result code], as UTF-8.
+                                                               ##  * ^The sqlite3_errstr(E) interface returns the English-language text
+                                                               ##  * that describes the [result code] E, as UTF-8, or NULL if E is not an
+                                                               ##  * result code for which a text error message is available.
                                                                ##  * ^(Memory to hold the error message string is managed internally
                                                                ##  * and must not be freed by the application)^.
                                                                ##  *
@@ -3863,13 +4037,17 @@ proc sqlite3_prepare*(db: ptr sqlite3; zSql: cstring; nByte: cint;
                     ##  * and sqlite3_prepare16_v3() use UTF-16.
                     ##  *
                     ##  * ^If the nByte argument is negative, then zSql is read up to the
-                    ##  * first zero terminator. ^If nByte is positive, then it is the
-                    ##  * number of bytes read from zSql.  ^If nByte is zero, then no prepared
+                    ##  * first zero terminator. ^If nByte is positive, then it is the maximum
+                    ##  * number of bytes read from zSql.  When nByte is positive, zSql is read
+                    ##  * up to the first zero terminator or until the nByte bytes have been read,
+                    ##  * whichever comes first.  ^If nByte is zero, then no prepared
                     ##  * statement is generated.
                     ##  * If the caller knows that the supplied string is nul-terminated, then
                     ##  * there is a small performance advantage to passing an nByte parameter that
                     ##  * is the number of bytes in the input string <i>including</i>
                     ##  * the nul-terminator.
+                    ##  * Note that nByte measure the length of the input in bytes, not
+                    ##  * characters, even for the UTF-16 interfaces.
                     ##  *
                     ##  * ^If pzTail is not NULL thenpzTail is made to point to the first byte
                     ##  * past the end of the first SQL statement in zSql.  These routines only
@@ -4049,6 +4227,41 @@ proc sqlite3_stmt_isexplain*(pStmt: ptr sqlite3_stmt): cint {.importc, sqlitedec
                                                                               ##  * ^The sqlite3_stmt_isexplain(S) interface returns 0 if S is
                                                                               ##  * an ordinary statement or a NULL pointer.
                                                                               ## ```
+proc sqlite3_stmt_explain*(pStmt: ptr sqlite3_stmt; eMode: cint): cint {.
+    importc, sqlitedecl.}
+  ## ```
+                    ##   * CAPI3REF: Change The EXPLAIN Setting For A Prepared Statement
+                    ##  * METHOD: sqlite3_stmt
+                    ##  *
+                    ##  * The sqlite3_stmt_explain(S,E) interface changes the EXPLAIN
+                    ##  * setting for [prepared statement] S.  If E is zero, then S becomes
+                    ##  * a normal prepared statement.  If E is 1, then S behaves as if
+                    ##  * its SQL text began with "[EXPLAIN]".  If E is 2, then S behaves as if
+                    ##  * its SQL text began with "[EXPLAIN QUERY PLAN]".
+                    ##  *
+                    ##  * Calling sqlite3_stmt_explain(S,E) might cause S to be reprepared.
+                    ##  * SQLite tries to avoid a reprepare, but a reprepare might be necessary
+                    ##  * on the first transition into EXPLAIN or EXPLAIN QUERY PLAN mode.
+                    ##  *
+                    ##  * Because of the potential need to reprepare, a call to
+                    ##  * sqlite3_stmt_explain(S,E) will fail with SQLITE_ERROR if S cannot be
+                    ##  * reprepared because it was created using [sqlite3_prepare()] instead of
+                    ##  * the newer [sqlite3_prepare_v2()] or [sqlite3_prepare_v3()] interfaces and
+                    ##  * hence has no saved SQL text with which to reprepare.
+                    ##  *
+                    ##  * Changing the explain setting for a prepared statement does not change
+                    ##  * the original SQL text for the statement.  Hence, if the SQL text originally
+                    ##  * began with EXPLAIN or EXPLAIN QUERY PLAN, but sqlite3_stmt_explain(S,0)
+                    ##  * is called to convert the statement into an ordinary statement, the EXPLAIN
+                    ##  * or EXPLAIN QUERY PLAN keywords will still appear in the sqlite3_sql(S)
+                    ##  * output, even though the statement now acts like a normal SQL statement.
+                    ##  *
+                    ##  * This routine returns SQLITE_OK if the explain mode is successfully
+                    ##  * changed, or an error code if the explain mode could not be changed.
+                    ##  * The explain mode cannot be changed while a statement is active.
+                    ##  * Hence, it is good practice to call [sqlite3_reset(S)]
+                    ##  * immediately prior to calling sqlite3_stmt_explain(S,E).
+                    ## ```
 proc sqlite3_stmt_busy*(a1: ptr sqlite3_stmt): cint {.importc, sqlitedecl.}
   ## ```
                                                                       ##   * CAPI3REF: Determine If A Prepared Statement Has Been Reset
@@ -4155,7 +4368,7 @@ proc sqlite3_bind_blob*(a1: ptr sqlite3_stmt; a2: cint; a3: pointer; n: cint;
                                                                                   ##  * with it may be passed. ^It is called to dispose of the BLOB or string even
                                                                                   ##  * if the call to the bind API fails, except the destructor is not called if
                                                                                   ##  * the third parameter is a NULL pointer or the fourth parameter is negative.
-                                                                                  ##  * ^ (2) The special constant, [SQLITE_STATIC], may be passsed to indicate that
+                                                                                  ##  * ^ (2) The special constant, [SQLITE_STATIC], may be passed to indicate that
                                                                                   ##  * the application remains responsible for disposing of the object. ^In this
                                                                                   ##  * case, the object and the provided pointer to it must remain valid until
                                                                                   ##  * either the prepared statement is finalized or the same SQL parameter is
@@ -4228,7 +4441,7 @@ proc sqlite3_bind_text16*(a1: ptr sqlite3_stmt; a2: cint; a3: pointer; a4: cint;
     sqlitedecl.}
 proc sqlite3_bind_text64*(a1: ptr sqlite3_stmt; a2: cint; a3: cstring;
                           a4: uint64; a5: proc (a1: pointer) {.sqlitedecl.};
-                          encoding: cuchar): cint {.importc, sqlitedecl.}
+                          encoding: uint8): cint {.importc, sqlitedecl.}
 proc sqlite3_bind_value*(a1: ptr sqlite3_stmt; a2: cint; a3: ptr sqlite3_value): cint {.
     importc, sqlitedecl.}
 proc sqlite3_bind_pointer*(a1: ptr sqlite3_stmt; a2: cint; a3: pointer;
@@ -4771,7 +4984,7 @@ proc sqlite3_column_int*(a1: ptr sqlite3_stmt; iCol: cint): cint {.importc,
     sqlitedecl.}
 proc sqlite3_column_int64*(a1: ptr sqlite3_stmt; iCol: cint): int64 {.importc,
     sqlitedecl.}
-proc sqlite3_column_text*(a1: ptr sqlite3_stmt; iCol: cint): cstring {.
+proc sqlite3_column_text*(a1: ptr sqlite3_stmt; iCol: cint): ptr uint8 {.
     importc, sqlitedecl.}
 proc sqlite3_column_text16*(a1: ptr sqlite3_stmt; iCol: cint): pointer {.
     importc, sqlitedecl.}
@@ -4824,14 +5037,26 @@ proc sqlite3_reset*(pStmt: ptr sqlite3_stmt): cint {.importc, sqlitedecl.}
                                                                      ##  * ^The [sqlite3_reset(S)] interface resets the [prepared statement] S
                                                                      ##  * back to the beginning of its program.
                                                                      ##  *
-                                                                     ##  * ^If the most recent call to [sqlite3_step(S)] for the
-                                                                     ##  * [prepared statement] S returned [SQLITE_ROW] or [SQLITE_DONE],
-                                                                     ##  * or if [sqlite3_step(S)] has never before been called on S,
-                                                                     ##  * then [sqlite3_reset(S)] returns [SQLITE_OK].
+                                                                     ##  * ^The return code from [sqlite3_reset(S)] indicates whether or not
+                                                                     ##  * the previous evaluation of prepared statement S completed successfully.
+                                                                     ##  * ^If [sqlite3_step(S)] has never before been called on S or if
+                                                                     ##  * [sqlite3_step(S)] has not been called since the previous call
+                                                                     ##  * to [sqlite3_reset(S)], then [sqlite3_reset(S)] will return
+                                                                     ##  * [SQLITE_OK].
                                                                      ##  *
                                                                      ##  * ^If the most recent call to [sqlite3_step(S)] for the
                                                                      ##  * [prepared statement] S indicated an error, then
                                                                      ##  * [sqlite3_reset(S)] returns an appropriate [error code].
+                                                                     ##  * ^The [sqlite3_reset(S)] interface might also return an [error code]
+                                                                     ##  * if there were no prior errors but the process of resetting
+                                                                     ##  * the prepared statement caused a new error. ^For example, if an
+                                                                     ##  * [INSERT] statement with a [RETURNING] clause is only stepped one time,
+                                                                     ##  * that one call to [sqlite3_step(S)] might return SQLITE_ROW but
+                                                                     ##  * the overall statement might still fail and the [sqlite3_reset(S)] call
+                                                                     ##  * might return SQLITE_BUSY if locking constraints prevent the
+                                                                     ##  * database change from committing.  Therefore, it is important that
+                                                                     ##  * applications check the return code from [sqlite3_reset(S)] even if
+                                                                     ##  * no prior call to [sqlite3_step(S)] indicated a problem.
                                                                      ##  *
                                                                      ##  * ^The [sqlite3_reset(S)] interface does not change the values
                                                                      ##  * of any [sqlite3_bind_blob|bindings] on the [prepared statement] S.
@@ -5074,16 +5299,6 @@ proc sqlite3_value_blob*(a1: ptr sqlite3_value): pointer {.importc, sqlitedecl.}
                                                                            ##  * then the conversion is performed.  Otherwise no conversion occurs.
                                                                            ##  * The [SQLITE_INTEGER | datatype] after conversion is returned.)^
                                                                            ##  *
-                                                                           ##  * ^(The sqlite3_value_encoding(X) interface returns one of [SQLITE_UTF8],
-                                                                           ##  * [SQLITE_UTF16BE], or [SQLITE_UTF16LE] according to the current encoding
-                                                                           ##  * of the value X, assuming that X has type TEXT.)^  If sqlite3_value_type(X)
-                                                                           ##  * returns something other than SQLITE_TEXT, then the return value from
-                                                                           ##  * sqlite3_value_encoding(X) is meaningless.  ^Calls to
-                                                                           ##  * sqlite3_value_text(X), sqlite3_value_text16(X), sqlite3_value_text16be(X),
-                                                                           ##  * sqlite3_value_text16le(X), sqlite3_value_bytes(X), or
-                                                                           ##  * sqlite3_value_bytes16(X) might change the encoding of the value X and
-                                                                           ##  * thus change the return from subsequent calls to sqlite3_value_encoding(X).
-                                                                           ##  *
                                                                            ##  * ^Within the [xUpdate] method of a [virtual table], the
                                                                            ##  * sqlite3_value_nochange(X) interface returns true if and only if
                                                                            ##  * the column corresponding to X is unchanged by the UPDATE operation
@@ -5138,7 +5353,7 @@ proc sqlite3_value_int*(a1: ptr sqlite3_value): cint {.importc, sqlitedecl.}
 proc sqlite3_value_int64*(a1: ptr sqlite3_value): int64 {.importc, sqlitedecl.}
 proc sqlite3_value_pointer*(a1: ptr sqlite3_value; a2: cstring): pointer {.
     importc, sqlitedecl.}
-proc sqlite3_value_text*(a1: ptr sqlite3_value): cstring {.importc, sqlitedecl.}
+proc sqlite3_value_text*(a1: ptr sqlite3_value): ptr uint8 {.importc, sqlitedecl.}
 proc sqlite3_value_text16*(a1: ptr sqlite3_value): pointer {.importc, sqlitedecl.}
 proc sqlite3_value_text16le*(a1: ptr sqlite3_value): pointer {.importc, sqlitedecl.}
 proc sqlite3_value_text16be*(a1: ptr sqlite3_value): pointer {.importc, sqlitedecl.}
@@ -5149,6 +5364,26 @@ proc sqlite3_value_numeric_type*(a1: ptr sqlite3_value): cint {.importc, sqlited
 proc sqlite3_value_nochange*(a1: ptr sqlite3_value): cint {.importc, sqlitedecl.}
 proc sqlite3_value_frombind*(a1: ptr sqlite3_value): cint {.importc, sqlitedecl.}
 proc sqlite3_value_encoding*(a1: ptr sqlite3_value): cint {.importc, sqlitedecl.}
+  ## ```
+                                                                            ##   * CAPI3REF: Report the internal text encoding state of an sqlite3_value object
+                                                                            ##  * METHOD: sqlite3_value
+                                                                            ##  *
+                                                                            ##  * ^(The sqlite3_value_encoding(X) interface returns one of [SQLITE_UTF8],
+                                                                            ##  * [SQLITE_UTF16BE], or [SQLITE_UTF16LE] according to the current text encoding
+                                                                            ##  * of the value X, assuming that X has type TEXT.)^  If sqlite3_value_type(X)
+                                                                            ##  * returns something other than SQLITE_TEXT, then the return value from
+                                                                            ##  * sqlite3_value_encoding(X) is meaningless.  ^Calls to
+                                                                            ##  * [sqlite3_value_text(X)], [sqlite3_value_text16(X)], [sqlite3_value_text16be(X)],
+                                                                            ##  * [sqlite3_value_text16le(X)], [sqlite3_value_bytes(X)], or
+                                                                            ##  * [sqlite3_value_bytes16(X)] might change the encoding of the value X and
+                                                                            ##  * thus change the return from subsequent calls to sqlite3_value_encoding(X).
+                                                                            ##  *
+                                                                            ##  * This routine is intended for used by applications that test and validate
+                                                                            ##  * the SQLite implementation.  This routine is inquiring about the opaque
+                                                                            ##  * internal state of an [sqlite3_value] object.  Ordinary applications should
+                                                                            ##  * not need to know what the internal state of an sqlite3_value object is and
+                                                                            ##  * hence should not need to use this interface.
+                                                                            ## ```
 proc sqlite3_value_subtype*(a1: ptr sqlite3_value): cuint {.importc, sqlitedecl.}
   ## ```
                                                                             ##   * CAPI3REF: Finding The Subtype Of SQL Values
@@ -5159,6 +5394,12 @@ proc sqlite3_value_subtype*(a1: ptr sqlite3_value): cuint {.importc, sqlitedecl.
                                                                             ##  * information can be used to pass a limited amount of context from
                                                                             ##  * one SQL function to another.  Use the [sqlite3_result_subtype()]
                                                                             ##  * routine to set the subtype for the return value of an SQL function.
+                                                                            ##  *
+                                                                            ##  * Every [application-defined SQL function] that invokes this interface
+                                                                            ##  * should include the [SQLITE_SUBTYPE] property in the text
+                                                                            ##  * encoding argument when the function is [sqlite3_create_function|registered].
+                                                                            ##  * If the [SQLITE_SUBTYPE] property is omitted, then sqlite3_value_subtype()
+                                                                            ##  * might return zero instead of the upstream subtype in some corner cases.
                                                                             ## ```
 proc sqlite3_value_dup*(a1: ptr sqlite3_value): ptr sqlite3_value {.importc,
     sqlitedecl.}
@@ -5256,48 +5497,56 @@ proc sqlite3_get_auxdata*(a1: ptr sqlite3_context; N: cint): pointer {.importc,
            ##  * METHOD: sqlite3_context
            ##  *
            ##  * These functions may be used by (non-aggregate) SQL functions to
-           ##  * associate metadata with argument values. If the same value is passed to
-           ##  * multiple invocations of the same SQL function during query execution, under
-           ##  * some circumstances the associated metadata may be preserved.  An example
-           ##  * of where this might be useful is in a regular-expression matching
-           ##  * function. The compiled version of the regular expression can be stored as
-           ##  * metadata associated with the pattern string.
+           ##  * associate auxiliary data with argument values. If the same argument
+           ##  * value is passed to multiple invocations of the same SQL function during
+           ##  * query execution, under some circumstances the associated auxiliary data
+           ##  * might be preserved.  An example of where this might be useful is in a
+           ##  * regular-expression matching function. The compiled version of the regular
+           ##  * expression can be stored as auxiliary data associated with the pattern string.
            ##  * Then as long as the pattern string remains the same,
            ##  * the compiled regular expression can be reused on multiple
            ##  * invocations of the same function.
            ##  *
-           ##  * ^The sqlite3_get_auxdata(C,N) interface returns a pointer to the metadata
+           ##  * ^The sqlite3_get_auxdata(C,N) interface returns a pointer to the auxiliary data
            ##  * associated by the sqlite3_set_auxdata(C,N,P,X) function with the Nth argument
            ##  * value to the application-defined function.  ^N is zero for the left-most
-           ##  * function argument.  ^If there is no metadata
+           ##  * function argument.  ^If there is no auxiliary data
            ##  * associated with the function argument, the sqlite3_get_auxdata(C,N) interface
            ##  * returns a NULL pointer.
            ##  *
-           ##  * ^The sqlite3_set_auxdata(C,N,P,X) interface saves P as metadata for the N-th
-           ##  * argument of the application-defined function.  ^Subsequent
+           ##  * ^The sqlite3_set_auxdata(C,N,P,X) interface saves P as auxiliary data for the
+           ##  * N-th argument of the application-defined function.  ^Subsequent
            ##  * calls to sqlite3_get_auxdata(C,N) return P from the most recent
-           ##  * sqlite3_set_auxdata(C,N,P,X) call if the metadata is still valid or
-           ##  * NULL if the metadata has been discarded.
+           ##  * sqlite3_set_auxdata(C,N,P,X) call if the auxiliary data is still valid or
+           ##  * NULL if the auxiliary data has been discarded.
            ##  * ^After each call to sqlite3_set_auxdata(C,N,P,X) where X is not NULL,
            ##  * SQLite will invoke the destructor function X with parameter P exactly
-           ##  * once, when the metadata is discarded.
-           ##  * SQLite is free to discard the metadata at any time, including: <ul>
+           ##  * once, when the auxiliary data is discarded.
+           ##  * SQLite is free to discard the auxiliary data at any time, including: <ul>
            ##  * <li> ^(when the corresponding function parameter changes)^, or
            ##  * <li> ^(when [sqlite3_reset()] or [sqlite3_finalize()] is called for the
            ##  *      SQL statement)^, or
            ##  * <li> ^(when sqlite3_set_auxdata() is invoked again on the same
            ##  *       parameter)^, or
            ##  * <li> ^(during the original sqlite3_set_auxdata() call when a memory
-           ##  *      allocation error occurs.)^ </ul>
+           ##  *      allocation error occurs.)^
+           ##  * <li> ^(during the original sqlite3_set_auxdata() call if the function
+           ##  *      is evaluated during query planning instead of during query execution,
+           ##  *      as sometimes happens with [SQLITE_ENABLE_STAT4].)^ </ul>
            ##  *
-           ##  * Note the last bullet in particular.  The destructor X in
+           ##  * Note the last two bullets in particular.  The destructor X in
            ##  * sqlite3_set_auxdata(C,N,P,X) might be called immediately, before the
            ##  * sqlite3_set_auxdata() interface even returns.  Hence sqlite3_set_auxdata()
            ##  * should be called near the end of the function implementation and the
            ##  * function implementation should not make any use of P after
-           ##  * sqlite3_set_auxdata() has been called.
+           ##  * sqlite3_set_auxdata() has been called.  Furthermore, a call to
+           ##  * sqlite3_get_auxdata() that occurs immediately after a corresponding call
+           ##  * to sqlite3_set_auxdata() might still return NULL if an out-of-memory
+           ##  * condition occurred during the sqlite3_set_auxdata() call or if the
+           ##  * function is being evaluated during query planning rather than during
+           ##  * query execution.
            ##  *
-           ##  * ^(In practice, metadata is preserved between function calls for
+           ##  * ^(In practice, auxiliary data is preserved between function calls for
            ##  * function parameters that are compile-time constants, including literal
            ##  * values and [parameters] and expressions composed from the same.)^
            ##  *
@@ -5307,9 +5556,69 @@ proc sqlite3_get_auxdata*(a1: ptr sqlite3_context; N: cint): pointer {.importc,
            ##  *
            ##  * These routines must be called from the same thread in which
            ##  * the SQL function is running.
+           ##  *
+           ##  * See also: [sqlite3_get_clientdata()] and [sqlite3_set_clientdata()].
            ## ```
 proc sqlite3_set_auxdata*(a1: ptr sqlite3_context; N: cint; a3: pointer;
                           a4: proc (a1: pointer) {.sqlitedecl.}) {.importc, sqlitedecl.}
+proc sqlite3_get_clientdata*(a1: ptr sqlite3; a2: cstring): pointer {.importc,
+    sqlitedecl.}
+  ## ```
+           ##   * CAPI3REF: Database Connection Client Data
+           ##  * METHOD: sqlite3
+           ##  *
+           ##  * These functions are used to associate one or more named pointers
+           ##  * with a [database connection].
+           ##  * A call to sqlite3_set_clientdata(D,N,P,X) causes the pointer P
+           ##  * to be attached to [database connection] D using name N.  Subsequent
+           ##  * calls to sqlite3_get_clientdata(D,N) will return a copy of pointer P
+           ##  * or a NULL pointer if there were no prior calls to
+           ##  * sqlite3_set_clientdata() with the same values of D and N.
+           ##  * Names are compared using strcmp() and are thus case sensitive.
+           ##  *
+           ##  * If P and X are both non-NULL, then the destructor X is invoked with
+           ##  * argument P on the first of the following occurrences:
+           ##  * <ul>
+           ##  * <li> An out-of-memory error occurs during the call to
+           ##  *      sqlite3_set_clientdata() which attempts to register pointer P.
+           ##  * <li> A subsequent call to sqlite3_set_clientdata(D,N,P,X) is made
+           ##  *      with the same D and N parameters.
+           ##  * <li> The database connection closes.  SQLite does not make any guarantees
+           ##  *      about the order in which destructors are called, only that all
+           ##  *      destructors will be called exactly once at some point during the
+           ##  *      database connection closing process.
+           ##  * </ul>
+           ##  *
+           ##  * SQLite does not do anything with client data other than invoke
+           ##  * destructors on the client data at the appropriate time.  The intended
+           ##  * use for client data is to provide a mechanism for wrapper libraries
+           ##  * to store additional information about an SQLite database connection.
+           ##  *
+           ##  * There is no limit (other than available memory) on the number of different
+           ##  * client data pointers (with different names) that can be attached to a
+           ##  * single database connection.  However, the implementation is optimized
+           ##  * for the case of having only one or two different client data names.
+           ##  * Applications and wrapper libraries are discouraged from using more than
+           ##  * one client data name each.
+           ##  *
+           ##  * There is no way to enumerate the client data pointers
+           ##  * associated with a database connection.  The N parameter can be thought
+           ##  * of as a secret key such that only code that knows the secret key is able
+           ##  * to access the associated data.
+           ##  *
+           ##  * Security Warning:  These interfaces should not be exposed in scripting
+           ##  * languages or in other circumstances where it might be possible for an
+           ##  * an attacker to invoke them.  Any agent that can invoke these interfaces
+           ##  * can probably also take control of the process.
+           ##  *
+           ##  * Database connection client data is only available for SQLite
+           ##  * version 3.44.0 ([dateof:3.44.0]) and later.
+           ##  *
+           ##  * See also: [sqlite3_set_auxdata()] and [sqlite3_get_auxdata()].
+           ## ```
+proc sqlite3_set_clientdata*(a1: ptr sqlite3; a2: cstring; a3: pointer;
+                             a4: proc (a1: pointer) {.sqlitedecl.}): cint {.importc,
+    sqlitedecl.}
 proc sqlite3_result_blob*(a1: ptr sqlite3_context; a2: pointer; a3: cint;
                           a4: proc (a1: pointer) {.sqlitedecl.}) {.importc, sqlitedecl.}
   ## ```
@@ -5477,7 +5786,7 @@ proc sqlite3_result_null*(a1: ptr sqlite3_context) {.importc, sqlitedecl.}
 proc sqlite3_result_text*(a1: ptr sqlite3_context; a2: cstring; a3: cint;
                           a4: proc (a1: pointer) {.sqlitedecl.}) {.importc, sqlitedecl.}
 proc sqlite3_result_text64*(a1: ptr sqlite3_context; a2: cstring; a3: uint64;
-                            a4: proc (a1: pointer) {.sqlitedecl.}; encoding: cuchar) {.
+                            a4: proc (a1: pointer) {.sqlitedecl.}; encoding: uint8) {.
     importc, sqlitedecl.}
 proc sqlite3_result_text16*(a1: ptr sqlite3_context; a2: pointer; a3: cint;
                             a4: proc (a1: pointer) {.sqlitedecl.}) {.importc, sqlitedecl.}
@@ -5505,6 +5814,20 @@ proc sqlite3_result_subtype*(a1: ptr sqlite3_context; a2: cuint) {.importc,
            ##  * higher order bits are discarded.
            ##  * The number of subtype bytes preserved by SQLite might increase
            ##  * in future releases of SQLite.
+           ##  *
+           ##  * Every [application-defined SQL function] that invokes this interface
+           ##  * should include the [SQLITE_RESULT_SUBTYPE] property in its
+           ##  * text encoding argument when the SQL function is
+           ##  * [sqlite3_create_function|registered].  If the [SQLITE_RESULT_SUBTYPE]
+           ##  * property is omitted from the function that invokes sqlite3_result_subtype(),
+           ##  * then in some cases the sqlite3_result_subtype() might fail to set
+           ##  * the result subtype.
+           ##  *
+           ##  * If SQLite is compiled with -DSQLITE_STRICT_SUBTYPE=1, then any
+           ##  * SQL function that invokes the sqlite3_result_subtype() interface
+           ##  * and that does not have the SQLITE_RESULT_SUBTYPE property will raise
+           ##  * an error.  Future versions of SQLite might enable -DSQLITE_STRICT_SUBTYPE=1
+           ##  * by default.
            ## ```
 proc sqlite3_create_collation*(a1: ptr sqlite3; zName: cstring; eTextRep: cint;
                                pArg: pointer; xCompare: proc (a1: pointer;
@@ -5650,6 +5973,13 @@ proc sqlite3_sleep*(a1: cint): cint {.importc, sqlitedecl.}
                                                       ##  * of the default VFS is not implemented correctly, or not implemented at
                                                       ##  * all, then the behavior of sqlite3_sleep() may deviate from the description
                                                       ##  * in the previous paragraphs.
+                                                      ##  *
+                                                      ##  * If a negative argument is passed to sqlite3_sleep() the results vary by
+                                                      ##  * VFS and operating system.  Some system treat a negative argument as an
+                                                      ##  * instruction to sleep forever.  Others understand it to mean do not sleep
+                                                      ##  * at all. ^In SQLite version 3.42.0 and later, a negative
+                                                      ##  * argument passed into sqlite3_sleep() is changed to zero before it is relayed
+                                                      ##  * down into the xSleep method of the VFS.
                                                       ## ```
 proc sqlite3_win32_set_directory*(`type`: culong; zValue: pointer): cint {.
     importc, sqlitedecl.}
@@ -5898,7 +6228,7 @@ proc sqlite3_autovacuum_pages*(db: ptr sqlite3; a2: proc (a1: pointer;
                     ##  * ^Each call to the sqlite3_autovacuum_pages() interface overrides all
                     ##  * previous invocations for that database connection.  ^If the callback
                     ##  * argument (C) to sqlite3_autovacuum_pages(D,C,P,X) is a NULL pointer,
-                    ##  * then the autovacuum steps callback is cancelled.  The return value
+                    ##  * then the autovacuum steps callback is canceled.  The return value
                     ##  * from sqlite3_autovacuum_pages() is normally SQLITE_OK, but might
                     ##  * be some other error code if something goes wrong.  The current
                     ##  * implementation will only return SQLITE_OK or SQLITE_MISUSE, but other
@@ -5958,6 +6288,12 @@ proc sqlite3_update_hook*(a1: ptr sqlite3; a2: proc (a1: pointer; a2: cint;
                     ##  * invoked when rows are deleted using the [truncate optimization].
                     ##  * The exceptions defined in this paragraph might change in a future
                     ##  * release of SQLite.
+                    ##  *
+                    ##  * Whether the update hook is invoked before or after the
+                    ##  * corresponding change is currently unspecified and may differ
+                    ##  * depending on the type of change. Do not rely on the order of the
+                    ##  * hook call with regards to the final result of the operation which
+                    ##  * triggers the hook.
                     ##  *
                     ##  * The update hook implementation must not do anything that will modify
                     ##  * the database connection that invoked the update hook.  Any actions
@@ -6499,7 +6835,7 @@ proc sqlite3_blob_close*(a1: ptr sqlite3_blob): cint {.importc, sqlitedecl.}
                                                                        ##  * code is returned and the transaction rolled back.
                                                                        ##  *
                                                                        ##  * Calling this function with an argument that is not a NULL pointer or an
-                                                                       ##  * open blob handle results in undefined behaviour. ^Calling this routine
+                                                                       ##  * open blob handle results in undefined behavior. ^Calling this routine
                                                                        ##  * with a null pointer (such as would be returned by a failed call to
                                                                        ##  * [sqlite3_blob_open()]) is a harmless no-op. ^Otherwise, if this function
                                                                        ##  * is passed a valid open blob handle, the values returned by the
@@ -6724,18 +7060,20 @@ proc sqlite3_mutex_alloc*(a1: cint): ptr sqlite3_mutex {.importc, sqlitedecl.}
                                                                          ##  *
                                                                          ##  * ^(Some systems (for example, Windows 95) do not support the operation
                                                                          ##  * implemented by sqlite3_mutex_try().  On those systems, sqlite3_mutex_try()
-                                                                         ##  * will always return SQLITE_BUSY. The SQLite core only ever uses
-                                                                         ##  * sqlite3_mutex_try() as an optimization so this is acceptable
-                                                                         ##  * behavior.)^
+                                                                         ##  * will always return SQLITE_BUSY. In most cases the SQLite core only uses
+                                                                         ##  * sqlite3_mutex_try() as an optimization, so this is acceptable
+                                                                         ##  * behavior. The exceptions are unix builds that set the
+                                                                         ##  * SQLITE_ENABLE_SETLK_TIMEOUT build option. In that case a working
+                                                                         ##  * sqlite3_mutex_try() is required.)^
                                                                          ##  *
                                                                          ##  * ^The sqlite3_mutex_leave() routine exits a mutex that was
                                                                          ##  * previously entered by the same thread.   The behavior
                                                                          ##  * is undefined if the mutex is not currently entered by the
                                                                          ##  * calling thread or is not currently allocated.
                                                                          ##  *
-                                                                         ##  * ^If the argument to sqlite3_mutex_enter(), sqlite3_mutex_try(), or
-                                                                         ##  * sqlite3_mutex_leave() is a NULL pointer, then all three routines
-                                                                         ##  * behave as no-ops.
+                                                                         ##  * ^If the argument to sqlite3_mutex_enter(), sqlite3_mutex_try(),
+                                                                         ##  * sqlite3_mutex_leave(), or sqlite3_mutex_free() is a NULL pointer,
+                                                                         ##  * then any of the four routines behaves as a no-op.
                                                                          ##  *
                                                                          ##  * See also: [sqlite3_mutex_held()] and [sqlite3_mutex_notheld()].
                                                                          ## ```
@@ -6829,7 +7167,7 @@ proc sqlite3_keyword_count*(): cint {.importc, sqlitedecl.}
                                                       ##  * The sqlite3_keyword_count() interface returns the number of distinct
                                                       ##  * keywords understood by SQLite.
                                                       ##  *
-                                                      ##  * The sqlite3_keyword_name(N,Z,L) interface finds the N-th keyword and
+                                                      ##  * The sqlite3_keyword_name(N,Z,L) interface finds the 0-based N-th keyword and
                                                       ##  * makesZ point to that keyword expressed as UTF8 and writes the number
                                                       ##  * of bytes in the keyword intoL.  The string thatZ points to is not
                                                       ##  * zero-terminated.  The sqlite3_keyword_name(N,Z,L) routine returns
@@ -7251,6 +7589,16 @@ proc sqlite3_backup_init*(pDest: ptr sqlite3; zDestName: cstring;
                     ##  * APIs are not strictly speaking threadsafe. If they are invoked at the
                     ##  * same time as another thread is invoking sqlite3_backup_step() it is
                     ##  * possible that they return invalid values.
+                    ##  *
+                    ##  * <b>Alternatives To Using The Backup API</b>
+                    ##  *
+                    ##  * Other techniques for safely creating a consistent backup of an SQLite
+                    ##  * database include:
+                    ##  *
+                    ##  * <ul>
+                    ##  * <li> The [VACUUM INTO] command.
+                    ##  * <li> The [sqlite3_rsync] utility program.
+                    ##  * </ul>
                     ## ```
 proc sqlite3_backup_step*(p: ptr sqlite3_backup; nPage: cint): cint {.importc,
     sqlitedecl.}
@@ -7757,23 +8105,44 @@ proc sqlite3_vtab_distinct*(a1: ptr sqlite3_index_info): cint {.importc, sqlited
                                                                                 ##  * <li value="2"><p>
                                                                                 ##  * ^(If the sqlite3_vtab_distinct() interface returns 2, that means
                                                                                 ##  * that the query planner does not need the rows returned in any particular
-                                                                                ##  * order, as long as rows with the same values in all "aOrderBy" columns
-                                                                                ##  * are adjacent.)^  ^(Furthermore, only a single row for each particular
-                                                                                ##  * combination of values in the columns identified by the "aOrderBy" field
-                                                                                ##  * needs to be returned.)^  ^It is always ok for two or more rows with the same
-                                                                                ##  * values in all "aOrderBy" columns to be returned, as long as all such rows
-                                                                                ##  * are adjacent.  ^The virtual table may, if it chooses, omit extra rows
-                                                                                ##  * that have the same value for all columns identified by "aOrderBy".
-                                                                                ##  * ^However omitting the extra rows is optional.
+                                                                                ##  * order, as long as rows with the same values in all columns identified
+                                                                                ##  * by "aOrderBy" are adjacent.)^  ^(Furthermore, when two or more rows
+                                                                                ##  * contain the same values for all columns identified by "colUsed", all but
+                                                                                ##  * one such row may optionally be omitted from the result.)^
+                                                                                ##  * The virtual table is not required to omit rows that are duplicates
+                                                                                ##  * over the "colUsed" columns, but if the virtual table can do that without
+                                                                                ##  * too much extra effort, it could potentially help the query to run faster.
                                                                                 ##  * This mode is used for a DISTINCT query.
                                                                                 ##  * <li value="3"><p>
-                                                                                ##  * ^(If the sqlite3_vtab_distinct() interface returns 3, that means
-                                                                                ##  * that the query planner needs only distinct rows but it does need the
-                                                                                ##  * rows to be sorted.)^ ^The virtual table implementation is free to omit
-                                                                                ##  * rows that are identical in all aOrderBy columns, if it wants to, but
-                                                                                ##  * it is not required to omit any rows.  This mode is used for queries
+                                                                                ##  * ^(If the sqlite3_vtab_distinct() interface returns 3, that means the
+                                                                                ##  * virtual table must return rows in the order defined by "aOrderBy" as
+                                                                                ##  * if the sqlite3_vtab_distinct() interface had returned 0.  However if
+                                                                                ##  * two or more rows in the result have the same values for all columns
+                                                                                ##  * identified by "colUsed", then all but one such row may optionally be
+                                                                                ##  * omitted.)^  Like when the return value is 2, the virtual table
+                                                                                ##  * is not required to omit rows that are duplicates over the "colUsed"
+                                                                                ##  * columns, but if the virtual table can do that without
+                                                                                ##  * too much extra effort, it could potentially help the query to run faster.
+                                                                                ##  * This mode is used for queries
                                                                                 ##  * that have both DISTINCT and ORDER BY clauses.
                                                                                 ##  * </ol>
+                                                                                ##  *
+                                                                                ##  * <p>The following table summarizes the conditions under which the
+                                                                                ##  * virtual table is allowed to set the "orderByConsumed" flag based on
+                                                                                ##  * the value returned by sqlite3_vtab_distinct().  This table is a
+                                                                                ##  * restatement of the previous four paragraphs:
+                                                                                ##  *
+                                                                                ##  * <table border=1 cellspacing=0 cellpadding=10 width="90%">
+                                                                                ##  * <tr>
+                                                                                ##  * <td valign="top">sqlite3_vtab_distinct() return value
+                                                                                ##  * <td valign="top">Rows are returned in aOrderBy order
+                                                                                ##  * <td valign="top">Rows with the same value in all aOrderBy columns are adjacent
+                                                                                ##  * <td valign="top">Duplicates over all colUsed columns may be omitted
+                                                                                ##  * <tr><td>0<td>yes<td>yes<td>no
+                                                                                ##  * <tr><td>1<td>no<td>yes<td>no
+                                                                                ##  * <tr><td>2<td>no<td>yes<td>yes
+                                                                                ##  * <tr><td>3<td>yes<td>yes<td>yes
+                                                                                ##  * </table>
                                                                                 ##  *
                                                                                 ##  * ^For the purposes of comparing virtual table output values to see if the
                                                                                 ##  * values are same value for sorting purposes, two NULL values are considered
@@ -7811,7 +8180,7 @@ proc sqlite3_vtab_in*(a1: ptr sqlite3_index_info; iCons: cint; bHandle: cint): c
                     ##  * communicated to the xBestIndex method as a
                     ##  * [SQLITE_INDEX_CONSTRAINT_EQ] constraint.)^  If xBestIndex wants to use
                     ##  * this constraint, it must set the corresponding
-                    ##  * aConstraintUsage[].argvIndex to a postive integer.  ^(Then, under
+                    ##  * aConstraintUsage[].argvIndex to a positive integer.  ^(Then, under
                     ##  * the usual mode of handling IN operators, SQLite generates [bytecode]
                     ##  * that invokes the [xFilter|xFilter() method] once for each value
                     ##  * on the right-hand side of the IN operator.)^  Thus the virtual table
@@ -7880,21 +8249,20 @@ proc sqlite3_vtab_in_first*(pVal: ptr sqlite3_value;
                                                                                   ##  * is undefined and probably harmful.
                                                                                   ##  *
                                                                                   ##  * The X parameter in a call to sqlite3_vtab_in_first(X,P) or
-                                                                                  ##  * sqlite3_vtab_in_next(X,P) must be one of the parameters to the
+                                                                                  ##  * sqlite3_vtab_in_next(X,P) should be one of the parameters to the
                                                                                   ##  * xFilter method which invokes these routines, and specifically
                                                                                   ##  * a parameter that was previously selected for all-at-once IN constraint
                                                                                   ##  * processing use the [sqlite3_vtab_in()] interface in the
                                                                                   ##  * [xBestIndex|xBestIndex method].  ^(If the X parameter is not
                                                                                   ##  * an xFilter argument that was selected for all-at-once IN constraint
-                                                                                  ##  * processing, then these routines return [SQLITE_MISUSE])^ or perhaps
-                                                                                  ##  * exhibit some other undefined or harmful behavior.
+                                                                                  ##  * processing, then these routines return [SQLITE_ERROR].)^
                                                                                   ##  *
                                                                                   ##  * ^(Use these routines to access all values on the right-hand side
                                                                                   ##  * of the IN constraint using code like the following:
                                                                                   ##  *
                                                                                   ##  * <blockquote><pre>
                                                                                   ##  * &nbsp;  for(rc=sqlite3_vtab_in_first(pList, &pVal);
-                                                                                  ##  * &nbsp;      rc==SQLITE_OK && pVal
+                                                                                  ##  * &nbsp;      rc==SQLITE_OK && pVal;
                                                                                   ##  * &nbsp;      rc=sqlite3_vtab_in_next(pList, &pVal)
                                                                                   ##  * &nbsp;  ){
                                                                                   ##  * &nbsp;     do something with pVal
@@ -7969,7 +8337,7 @@ proc sqlite3_stmt_scanstatus*(pStmt: ptr sqlite3_stmt; idx: cint;
                     ##   * CAPI3REF: Prepared Statement Scan Status
                     ##  * METHOD: sqlite3_stmt
                     ##  *
-                    ##  * This interface returns information about the predicted and measured
+                    ##  * These interfaces return information about the predicted and measured
                     ##  * performance for pStmt.  Advanced applications can use this
                     ##  * interface to compare the predicted and the measured performance and
                     ##  * issue warnings and/or rerun [ANALYZE] if discrepancies are found.
@@ -7980,22 +8348,31 @@ proc sqlite3_stmt_scanstatus*(pStmt: ptr sqlite3_stmt; idx: cint;
                     ##  *
                     ##  * The "iScanStatusOp" parameter determines which status information to return.
                     ##  * The "iScanStatusOp" must be one of the [scanstatus options] or the behavior
-                    ##  * of this interface is undefined.
-                    ##  * ^The requested measurement is written into a variable pointed to by
-                    ##  * the "pOut" parameter.
-                    ##  * Parameter "idx" identifies the specific loop to retrieve statistics for.
-                    ##  * Loops are numbered starting from zero. ^If idx is out of range - less than
-                    ##  * zero or greater than or equal to the total number of loops used to implement
-                    ##  * the statement - a non-zero value is returned and the variable that pOut
-                    ##  * points to is unchanged.
+                    ##  * of this interface is undefined. ^The requested measurement is written into
+                    ##  * a variable pointed to by the "pOut" parameter.
                     ##  *
-                    ##  * ^Statistics might not be available for all loops in all statements. ^In cases
-                    ##  * where there exist loops with no available statistics, this function behaves
-                    ##  * as if the loop did not exist - it returns non-zero and leave the variable
-                    ##  * that pOut points to unchanged.
+                    ##  * The "flags" parameter must be passed a mask of flags. At present only
+                    ##  * one flag is defined - SQLITE_SCANSTAT_COMPLEX. If SQLITE_SCANSTAT_COMPLEX
+                    ##  * is specified, then status information is available for all elements
+                    ##  * of a query plan that are reported by "EXPLAIN QUERY PLAN" output. If
+                    ##  * SQLITE_SCANSTAT_COMPLEX is not specified, then only query plan elements
+                    ##  * that correspond to query loops (the "SCAN..." and "SEARCH..." elements of
+                    ##  * the EXPLAIN QUERY PLAN output) are available. Invoking API
+                    ##  * sqlite3_stmt_scanstatus() is equivalent to calling
+                    ##  * sqlite3_stmt_scanstatus_v2() with a zeroed flags parameter.
+                    ##  *
+                    ##  * Parameter "idx" identifies the specific query element to retrieve statistics
+                    ##  * for. Query elements are numbered starting from zero. A value of -1 may be
+                    ##  * to query for statistics regarding the entire query. ^If idx is out of range
+                    ##  * - less than -1 or greater than or equal to the total number of query
+                    ##  * elements used to implement the statement - a non-zero value is returned and
+                    ##  * the variable that pOut points to is unchanged.
                     ##  *
                     ##  * See also: [sqlite3_stmt_scanstatus_reset()]
                     ## ```
+proc sqlite3_stmt_scanstatus_v2*(pStmt: ptr sqlite3_stmt; idx: cint;
+                                 iScanStatusOp: cint; flags: cint; pOut: pointer): cint {.
+    importc, sqlitedecl.}
 proc sqlite3_stmt_scanstatus_reset*(a1: ptr sqlite3_stmt) {.importc, sqlitedecl.}
   ## ```
                                                                             ##   * CAPI3REF: Zero Scan-Status Counters
@@ -8084,6 +8461,10 @@ proc sqlite3_system_errno*(a1: ptr sqlite3): cint {.importc, sqlitedecl.}
                                                                     ##  * function is not defined for operations on WITHOUT ROWID tables, or for
                                                                     ##  * DELETE operations on rowid tables.
                                                                     ##  *
+                                                                    ##  * ^The sqlite3_preupdate_hook(D,C,P) function returns the P argument from
+                                                                    ##  * the previous call on the same [database connection] D, or NULL for
+                                                                    ##  * the first call on D.
+                                                                    ##  *
                                                                     ##  * The [sqlite3_preupdate_old()], [sqlite3_preupdate_new()],
                                                                     ##  * [sqlite3_preupdate_count()], and [sqlite3_preupdate_depth()] interfaces
                                                                     ##  * provide additional information about a preupdate event. These routines
@@ -8123,7 +8504,7 @@ proc sqlite3_system_errno*(a1: ptr sqlite3): cint {.importc, sqlitedecl.}
                                                                     ##  * When the [sqlite3_blob_write()] API is used to update a blob column,
                                                                     ##  * the pre-update hook is invoked with SQLITE_DELETE. This is because the
                                                                     ##  * in this case the new values are not available. In this case, when a
-                                                                    ##  * callback made with op==SQLITE_DELETE is actuall a write using the
+                                                                    ##  * callback made with op==SQLITE_DELETE is actually a write using the
                                                                     ##  * sqlite3_blob_write() API, the [sqlite3_preupdate_blobwrite()] returns
                                                                     ##  * the index of the column being written. In other cases, where the
                                                                     ##  * pre-update hook is being invoked for some other reason, including a
@@ -8156,6 +8537,14 @@ proc sqlite3_snapshot_get*(db: ptr sqlite3; zSchema: cstring;
                     ##  * created [sqlite3_snapshot] object intoP and returns SQLITE_OK.
                     ##  * If there is not already a read-transaction open on schema S when
                     ##  * this function is called, one is opened automatically.
+                    ##  *
+                    ##  * If a read-transaction is opened by this function, then it is guaranteed
+                    ##  * that the returned snapshot object may not be invalidated by a database
+                    ##  * writer or checkpointer until after the read-transaction is closed. This
+                    ##  * is not guaranteed if a read-transaction is already open when this
+                    ##  * function is called. In that case, any subsequent write or checkpoint
+                    ##  * operation on the database may invalidate the returned snapshot handle,
+                    ##  * even while the read-transaction remains open.
                     ##  *
                     ##  * The following must be true for this function to succeed. If any of
                     ##  * the following statements are false when sqlite3_snapshot_get() is
@@ -8299,44 +8688,51 @@ proc sqlite3_snapshot_recover*(db: ptr sqlite3; zDb: cstring): cint {.importc,
            ##  * [SQLITE_ENABLE_SNAPSHOT] option.
            ## ```
 proc sqlite3_serialize*(db: ptr sqlite3; zSchema: cstring; piSize: ptr int64;
-                        mFlags: cuint): ptr cuchar {.importc, sqlitedecl.}
+                        mFlags: cuint): ptr uint8 {.importc, sqlitedecl.}
   ## ```
-                                                                     ##   * CAPI3REF: Serialize a database
-                                                                     ##  *
-                                                                     ##  * The sqlite3_serialize(D,S,P,F) interface returns a pointer to memory
-                                                                     ##  * that is a serialization of the S database on [database connection] D.
-                                                                     ##  * If P is not a NULL pointer, then the size of the database in bytes
-                                                                     ##  * is written intoP.
-                                                                     ##  *
-                                                                     ##  * For an ordinary on-disk database file, the serialization is just a
-                                                                     ##  * copy of the disk file.  For an in-memory database or a "TEMP" database,
-                                                                     ##  * the serialization is the same sequence of bytes which would be written
-                                                                     ##  * to disk if that database where backed up to disk.
-                                                                     ##  *
-                                                                     ##  * The usual case is that sqlite3_serialize() copies the serialization of
-                                                                     ##  * the database into memory obtained from [sqlite3_malloc64()] and returns
-                                                                     ##  * a pointer to that memory.  The caller is responsible for freeing the
-                                                                     ##  * returned value to avoid a memory leak.  However, if the F argument
-                                                                     ##  * contains the SQLITE_SERIALIZE_NOCOPY bit, then no memory allocations
-                                                                     ##  * are made, and the sqlite3_serialize() function will return a pointer
-                                                                     ##  * to the contiguous memory representation of the database that SQLite
-                                                                     ##  * is currently using for that database, or NULL if the no such contiguous
-                                                                     ##  * memory representation of the database exists.  A contiguous memory
-                                                                     ##  * representation of the database will usually only exist if there has
-                                                                     ##  * been a prior call to [sqlite3_deserialize(D,S,...)] with the same
-                                                                     ##  * values of D and S.
-                                                                     ##  * The size of the database is written intoP even if the
-                                                                     ##  * SQLITE_SERIALIZE_NOCOPY bit is set but no contiguous copy
-                                                                     ##  * of the database exists.
-                                                                     ##  *
-                                                                     ##  * A call to sqlite3_serialize(D,S,P,F) might return NULL even if the
-                                                                     ##  * SQLITE_SERIALIZE_NOCOPY bit is omitted from argument F if a memory
-                                                                     ##  * allocation error occurs.
-                                                                     ##  *
-                                                                     ##  * This interface is omitted if SQLite is compiled with the
-                                                                     ##  * [SQLITE_OMIT_DESERIALIZE] option.
-                                                                     ## ```
-proc sqlite3_deserialize*(db: ptr sqlite3; zSchema: cstring; pData: ptr cuchar;
+                                                                    ##   * CAPI3REF: Serialize a database
+                                                                    ##  *
+                                                                    ##  * The sqlite3_serialize(D,S,P,F) interface returns a pointer to memory
+                                                                    ##  * that is a serialization of the S database on [database connection] D.
+                                                                    ##  * If P is not a NULL pointer, then the size of the database in bytes
+                                                                    ##  * is written intoP.
+                                                                    ##  *
+                                                                    ##  * For an ordinary on-disk database file, the serialization is just a
+                                                                    ##  * copy of the disk file.  For an in-memory database or a "TEMP" database,
+                                                                    ##  * the serialization is the same sequence of bytes which would be written
+                                                                    ##  * to disk if that database where backed up to disk.
+                                                                    ##  *
+                                                                    ##  * The usual case is that sqlite3_serialize() copies the serialization of
+                                                                    ##  * the database into memory obtained from [sqlite3_malloc64()] and returns
+                                                                    ##  * a pointer to that memory.  The caller is responsible for freeing the
+                                                                    ##  * returned value to avoid a memory leak.  However, if the F argument
+                                                                    ##  * contains the SQLITE_SERIALIZE_NOCOPY bit, then no memory allocations
+                                                                    ##  * are made, and the sqlite3_serialize() function will return a pointer
+                                                                    ##  * to the contiguous memory representation of the database that SQLite
+                                                                    ##  * is currently using for that database, or NULL if the no such contiguous
+                                                                    ##  * memory representation of the database exists.  A contiguous memory
+                                                                    ##  * representation of the database will usually only exist if there has
+                                                                    ##  * been a prior call to [sqlite3_deserialize(D,S,...)] with the same
+                                                                    ##  * values of D and S.
+                                                                    ##  * The size of the database is written intoP even if the
+                                                                    ##  * SQLITE_SERIALIZE_NOCOPY bit is set but no contiguous copy
+                                                                    ##  * of the database exists.
+                                                                    ##  *
+                                                                    ##  * After the call, if the SQLITE_SERIALIZE_NOCOPY bit had been set,
+                                                                    ##  * the returned buffer content will remain accessible and unchanged
+                                                                    ##  * until either the next write operation on the connection or when
+                                                                    ##  * the connection is closed, and applications must not modify the
+                                                                    ##  * buffer. If the bit had been clear, the returned buffer will not
+                                                                    ##  * be accessed by SQLite after the call.
+                                                                    ##  *
+                                                                    ##  * A call to sqlite3_serialize(D,S,P,F) might return NULL even if the
+                                                                    ##  * SQLITE_SERIALIZE_NOCOPY bit is omitted from argument F if a memory
+                                                                    ##  * allocation error occurs.
+                                                                    ##  *
+                                                                    ##  * This interface is omitted if SQLite is compiled with the
+                                                                    ##  * [SQLITE_OMIT_DESERIALIZE] option.
+                                                                    ## ```
+proc sqlite3_deserialize*(db: ptr sqlite3; zSchema: cstring; pData: ptr uint8;
                           szDb: int64; szBuf: int64; mFlags: cuint): cint {.
     importc, sqlitedecl.}
   ## ```
@@ -8357,6 +8753,9 @@ proc sqlite3_deserialize*(db: ptr sqlite3; zSchema: cstring; pData: ptr cuchar;
                     ##  * SQLite will try to increase the buffer size using sqlite3_realloc64()
                     ##  * if writes on the database cause it to grow larger than M bytes.
                     ##  *
+                    ##  * Applications must not modify the buffer P or invalidate it before
+                    ##  * the database connection D is closed.
+                    ##  *
                     ##  * The sqlite3_deserialize() interface will fail with SQLITE_BUSY if the
                     ##  * database is currently in a read transaction or is involved in a backup
                     ##  * operation.
@@ -8364,6 +8763,13 @@ proc sqlite3_deserialize*(db: ptr sqlite3; zSchema: cstring; pData: ptr cuchar;
                     ##  * It is not possible to deserialized into the TEMP database.  If the
                     ##  * S argument to sqlite3_deserialize(D,S,P,N,M,F) is "temp" then the
                     ##  * function returns SQLITE_ERROR.
+                    ##  *
+                    ##  * The deserialized database should not be in [WAL mode].  If the database
+                    ##  * is in WAL mode, then any attempt to use the database file will result
+                    ##  * in an [SQLITE_CANTOPEN] error.  The application can set the
+                    ##  * [file format version numbers] (bytes 18 and 19) of the input database P
+                    ##  * to 0x01 prior to invoking sqlite3_deserialize(D,S,P,N,M,F) to force the
+                    ##  * database file into rollback mode and work around this limitation.
                     ##  *
                     ##  * If sqlite3_deserialize(D,S,P,N,M,F) fails for any reason and if the
                     ##  * SQLITE_DESERIALIZE_FREEONCLOSE bit is set in argument F, then
